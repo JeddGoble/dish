@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TrendingViewController.h
 //  Dish
 //
 //  Created by Jedd Goble on 10/22/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TrendingViewController : UIViewController
 
 @end
-
