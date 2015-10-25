@@ -37,6 +37,9 @@
                                 <color key="textColor" red="0.94901960780000005" green="0.40784313729999999" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btL-b4-YEu">
+                                <rect key="frame" x="61" y="185" width="44" height="40"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G1O-45-0UI">
                                 <rect key="frame" x="0.0" y="233" width="320" height="286"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HXN-cd-q3G">
@@ -187,6 +190,7 @@
                         <outlet property="followersCountLabel" destination="UDS-5y-snL" id="fAh-nU-KDy"/>
                         <outlet property="followersTextLabel" destination="L5r-8F-E34" id="JYI-tT-k1r"/>
                         <outlet property="locationTextLabel" destination="fP3-fX-WzD" id="STp-4N-ID3"/>
+                        <outlet property="orangeControlBar" destination="sD3-Z4-wRk" id="czE-NA-QdO"/>
                         <outlet property="profilePhotoImageView" destination="x1t-wa-cag" id="Sdb-Uz-6YG"/>
                         <outlet property="userBioTextView" destination="igk-HT-BDi" id="G8E-yo-Wd2"/>
                         <outlet property="usernameTextLabel" destination="HNr-tW-6M2" id="avp-wV-liS"/>

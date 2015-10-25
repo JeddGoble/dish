@@ -19,9 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *userBioTextView;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dietTextLabel;
-
-
-
+@property (weak, nonatomic) IBOutlet UIImageView *orangeControlBar;
 
 @end
 
@@ -29,7 +27,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UIButton *pinButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width * 0.666, self.orangeControlBar.center.y, 50, 50)];
+    pinButton.layer.cornerRadius = pinButton.bounds.size.height / 2.0;
+    pinButton.backgroundColor = [UIColor whiteColor];
+    
+    UIImage *pinImage = [UIImage imageNamed:@"orangepin"];
+    UIImage *resizedImage = [self imageForScaling:pinImage scaledToSize:CGSizeMake(30.0, 30.0)];
+    UIImageView *pinImageView = [[UIImageView alloc] initWithImage:resizedImage];
+    pinImageView.frame = pinButton.frame;
+    
+    
+    [self.view addSubview:pinButton];
+    [self.view addSubview:pinImageView];
+    
+}
+
+- (UIImage *)imageForScaling:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    return newImage;
 }
 
 
