@@ -159,13 +159,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="E6b-Wa-qu9"/>
                                 </constraints>
-<<<<<<< HEAD
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-=======
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
->>>>>>> 56cacd97ca862cc33cf057481e91aadac4ac5d47
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-OA-LW8">
@@ -180,20 +175,6 @@
                                     <constraint firstAttribute="height" constant="30" id="KlT-zL-FO3"/>
                                     <constraint firstAttribute="width" constant="30" id="s5u-CP-OSE"/>
                                 </constraints>
-<<<<<<< HEAD
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dishes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ig-OU-wqK">
-                                <rect key="frame" x="7" y="58" width="91" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5r-8F-E34">
-                                <rect key="frame" x="222" y="58" width="91" height="21"/>
-=======
                                 <state key="normal" backgroundImage="aroundme"/>
                                 <connections>
                                     <action selector="onLocationButtonPressed:" destination="snQ-Vd-dvl" eventType="touchUpInside" id="h0h-mj-8L3"/>
@@ -204,20 +185,12 @@
                             </scrollView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HtJ-XL-Gl2">
                                 <rect key="frame" x="142" y="265" width="37" height="37"/>
->>>>>>> 56cacd97ca862cc33cf057481e91aadac4ac5d47
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="JfK-zC-0xD"/>
                                     <constraint firstAttribute="height" constant="37" id="end-kN-drP"/>
                                 </constraints>
-<<<<<<< HEAD
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-=======
                                 <color key="color" red="0.32549019607843138" green="0.12941176470588237" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
->>>>>>> 56cacd97ca862cc33cf057481e91aadac4ac5d47
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -298,7 +271,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aroundme" width="128" height="128"/>
+        <image name="aroundme" width="25" height="25"/>
         <image name="jedd" width="960" height="960"/>
         <image name="purpleblock" width="1242" height="1242"/>
     </resources>
