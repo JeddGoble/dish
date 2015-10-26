@@ -7,8 +7,10 @@
 //
 
 #import "TakePhotoViewController.h"
+#import "PostPhotoViewController.h"
 
-@interface TakePhotoViewController ()
+@interface TakePhotoViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate >
+@property UIImage *image;
 
 @end
 
@@ -17,21 +19,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)takePictureButtonPressed:(UIButton *)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.image = image;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"segue" sender:nil];
+    
+    
+    
 }
-*/
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PostPhotoViewController *dvc = segue.destinationViewController;
+    dvc.image = self.image;
+}
+
 
 @end
