@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048506401BDDC1B000E3443E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485063F1BDDC1B000E3443E /* Photo.m */; settings = {ASSET_TAGS = (); }; };
+		048506421BDDE56300E3443E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048506411BDDE56300E3443E /* MapKit.framework */; };
 		04A869CC1BD99D8500D7C883 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A869CB1BD99D8500D7C883 /* main.m */; };
 		04A869CF1BD99D8500D7C883 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A869CE1BD99D8500D7C883 /* AppDelegate.m */; };
 		04A869D51BD99D8500D7C883 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A869D31BD99D8500D7C883 /* Main.storyboard */; };
@@ -63,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0485063E1BDDC1B000E3443E /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		0485063F1BDDC1B000E3443E /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		048506411BDDE56300E3443E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		04A869C71BD99D8500D7C883 /* Dish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A869CB1BD99D8500D7C883 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04A869CD1BD99D8500D7C883 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 			files = (
 				04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */,
 				04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */,
+				048506421BDDE56300E3443E /* MapKit.framework in Frameworks */,
 				04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */,
 				04A86A441BD9A7BB00D7C883 /* libz.tbd in Frameworks */,
 				04A86A421BD9A7B200D7C883 /* SystemConfiguration.framework in Frameworks */,
@@ -253,6 +259,8 @@
 		04A86A141BD9A21300D7C883 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0485063E1BDDC1B000E3443E /* Photo.h */,
+				0485063F1BDDC1B000E3443E /* Photo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,6 +268,7 @@
 		04A86A321BD9A71F00D7C883 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				048506411BDDE56300E3443E /* MapKit.framework */,
 				04A86A491BD9A7DF00D7C883 /* Social.framework */,
 				04A86A471BD9A7DA00D7C883 /* Accounts.framework */,
 				04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */,
@@ -350,6 +359,11 @@
 				TargetAttributes = {
 					04A869C61BD99D8500D7C883 = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					04A869DF1BD99D8500D7C883 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -422,6 +436,7 @@
 				04A86A051BD99E6300D7C883 /* TrendingViewController.m in Sources */,
 				04A869FF1BD99DC900D7C883 /* FeedViewController.m in Sources */,
 				04A86A021BD99E2B00D7C883 /* TakePhotoViewController.m in Sources */,
+				048506401BDDC1B000E3443E /* Photo.m in Sources */,
 				04A86A111BD99FC100D7C883 /* ProfileViewController.m in Sources */,
 				04A869CC1BD99D8500D7C883 /* main.m in Sources */,
 				04A86A0E1BD99F9700D7C883 /* NotificationsViewController.m in Sources */,
@@ -696,6 +711,7 @@
 				04A869F61BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A869F71BD99D8500D7C883 /* Build configuration list for PBXNativeTarget "DishTests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +720,7 @@
 				04A869F91BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A869FA1BD99D8500D7C883 /* Build configuration list for PBXNativeTarget "DishUITests" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +729,7 @@
 				04A869FC1BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
