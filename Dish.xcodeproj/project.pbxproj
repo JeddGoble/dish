@@ -43,6 +43,8 @@
 		04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */; };
 		04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A471BD9A7DA00D7C883 /* Accounts.framework */; };
 		04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A491BD9A7DF00D7C883 /* Social.framework */; };
+		ACDDC2AD1BDEBF5000C8AA7F /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		ACFD77651BDDC3E500511AD3 /* PostPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,10 @@
 		04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		04A86A471BD9A7DA00D7C883 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		04A86A491BD9A7DF00D7C883 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		ACDDC2AB1BDEBF5000C8AA7F /* SetLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetLocationViewController.h; sourceTree = "<group>"; };
+		ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationViewController.m; sourceTree = "<group>"; };
+		ACFD77631BDDC3E500511AD3 /* PostPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostPhotoViewController.h; sourceTree = "<group>"; };
+		ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostPhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,14 +242,13 @@
 		04A86A131BD9A20B00D7C883 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ACFD77661BDDC3F900511AD3 /* Photo */,
 				04A86A0F1BD99FC100D7C883 /* ProfileViewController.h */,
 				04A86A101BD99FC100D7C883 /* ProfileViewController.m */,
 				04A86A031BD99E6300D7C883 /* TrendingViewController.h */,
 				04A86A041BD99E6300D7C883 /* TrendingViewController.m */,
 				04A86A0C1BD99F9700D7C883 /* NotificationsViewController.h */,
 				04A86A0D1BD99F9700D7C883 /* NotificationsViewController.m */,
-				04A86A001BD99E2B00D7C883 /* TakePhotoViewController.h */,
-				04A86A011BD99E2B00D7C883 /* TakePhotoViewController.m */,
 				04A869FD1BD99DC900D7C883 /* FeedViewController.h */,
 				04A869FE1BD99DC900D7C883 /* FeedViewController.m */,
 			);
@@ -281,6 +286,19 @@
 				04A86A2A1BD9A71300D7C883 /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACFD77661BDDC3F900511AD3 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDC2AB1BDEBF5000C8AA7F /* SetLocationViewController.h */,
+				ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */,
+				04A86A001BD99E2B00D7C883 /* TakePhotoViewController.h */,
+				04A86A011BD99E2B00D7C883 /* TakePhotoViewController.m */,
+				ACFD77631BDDC3E500511AD3 /* PostPhotoViewController.h */,
+				ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */,
+			);
+			name = Photo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +368,7 @@
 				TargetAttributes = {
 					04A869C61BD99D8500D7C883 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 4T6L9AH26Z;
 					};
 					04A869DF1BD99D8500D7C883 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -421,10 +440,12 @@
 				04A869CF1BD99D8500D7C883 /* AppDelegate.m in Sources */,
 				04A86A051BD99E6300D7C883 /* TrendingViewController.m in Sources */,
 				04A869FF1BD99DC900D7C883 /* FeedViewController.m in Sources */,
+				ACFD77651BDDC3E500511AD3 /* PostPhotoViewController.m in Sources */,
 				04A86A021BD99E2B00D7C883 /* TakePhotoViewController.m in Sources */,
 				04A86A111BD99FC100D7C883 /* ProfileViewController.m in Sources */,
 				04A869CC1BD99D8500D7C883 /* main.m in Sources */,
 				04A86A0E1BD99F9700D7C883 /* NotificationsViewController.m in Sources */,
+				ACDDC2AD1BDEBF5000C8AA7F /* SetLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +624,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dish",
@@ -611,6 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobilemakers.Dish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -618,6 +642,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dish",
@@ -626,6 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mobilemakers.Dish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -696,6 +723,7 @@
 				04A869F61BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A869F71BD99D8500D7C883 /* Build configuration list for PBXNativeTarget "DishTests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +732,7 @@
 				04A869F91BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04A869FA1BD99D8500D7C883 /* Build configuration list for PBXNativeTarget "DishUITests" */ = {
 			isa = XCConfigurationList;
@@ -712,6 +741,7 @@
 				04A869FC1BD99D8500D7C883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
