@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Photo.h"
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -24,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segController;
 @property (weak, nonatomic) IBOutlet UIScrollView *traitsView;
+@property (weak, nonatomic) IBOutlet UIButton *mapRefreshButton;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 
@@ -48,6 +51,7 @@
     self.mapView.hidden = YES;
     self.traitsView.hidden = YES;
     self.locationButton.hidden = YES;
+    self.mapRefreshButton.hidden = YES;
     
     self.collectionView.delegate = self;
     self.locationManager.delegate = self;
@@ -81,6 +85,7 @@
         
         [self getSixUserPhotos:self.currentUser withCompletion:^(NSArray *photos) {
             for (PFObject *photo in photos) {
+                
                 [self.photoObjects addObject:photo];
                 
                 PFFile *photoFile = photo[@"photo_data"];
@@ -120,12 +125,14 @@
         self.traitsView.hidden = YES;
         self.mapView.hidden = YES;
         self.locationButton.hidden = YES;
+        self.mapRefreshButton.hidden = YES;
         [self.locationManager stopUpdatingLocation];
     } else if (sender.selectedSegmentIndex == 1) {
         self.collectionView.hidden = YES;
         self.traitsView.hidden = NO;
         self.mapView.hidden = YES;
         self.locationButton.hidden = YES;
+        self.mapRefreshButton.hidden = YES;
         [self.locationManager stopUpdatingLocation];
         [self switchToTraitView];
     } else if (sender.selectedSegmentIndex == 2) {
@@ -134,6 +141,7 @@
         self.collectionView.hidden = YES;
         self.traitsView.hidden = YES;
         self.mapView.hidden = NO;
+        self.mapRefreshButton.hidden = NO;
         self.locationButton.hidden = NO;
     }
     
@@ -335,6 +343,58 @@
     
 }
 
+- (IBAction)onMapRefreshButtonPressed:(UIButton *)sender {
+    
+    for (PFObject *photo in self.photoObjects) {
+        PFObject *locationPointer = photo[@"Location_pointer"];
+        
+        NSLog(@"%@", locationPointer);
+        
+        PFQuery *locationQuery = [PFQuery queryWithClassName:@"Location"];
+        
+        [locationQuery getObjectInBackgroundWithId:locationPointer.objectId block:^(PFObject * _Nullable location, NSError * _Nullable error) {
+            
+            NSNumber *lat = location[@"latitude_number"];
+            NSNumber *lon = location[@"longitude_number"];
+            
+            double latDouble = [lat doubleValue];
+            double lonDouble = [lon doubleValue];
+            
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            
+            annotation.coordinate = CLLocationCoordinate2DMake(latDouble, lonDouble);
+            
+            [self.mapView addAnnotation:annotation];
+            
+        }];
+    }
+    
+}
+
+
+
+
+
+#pragma MapView Delegates
+
+
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    MKAnnotationView *pin = [MKAnnotationView new];
+    
+    if (annotation == self.mapView.userLocation) {
+        return nil;
+    }
+    
+    pin.image = [UIImage imageNamed:@"forkpin"];
+    
+    return pin;
+    
+}
+
+
+#pragma Failed alert
 
 - (void)failedWithError:(NSError *)error {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Could not find your location. Try again later." preferredStyle:UIAlertControllerStyleAlert];
@@ -347,28 +407,6 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
-
-
-
-#pragma MapView Delegates
-
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    
-    MKAnnotationView *pin = [MKAnnotationView new];
-    
-    if (annotation == self.mapView.userLocation) {
-        return nil;
-    }
-    
-    pin.image = [UIImage imageNamed:@"forkpinsmall"];
-    
-    return pin;
-    
-}
-
-
-
 
 
 

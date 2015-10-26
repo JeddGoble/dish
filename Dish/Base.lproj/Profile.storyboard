@@ -191,10 +191,22 @@
                                 </constraints>
                                 <color key="color" red="0.32549019607843138" green="0.12941176470588237" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayh-nk-bNU">
+                                <rect key="frame" x="274" y="291" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MXj-dJ-5fu"/>
+                                    <constraint firstAttribute="width" constant="30" id="vr1-0h-BNl"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="refresh"/>
+                                <connections>
+                                    <action selector="onMapRefreshButtonPressed:" destination="snQ-Vd-dvl" eventType="touchUpInside" id="aTa-eg-bBi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y0s-EJ-uYS" firstAttribute="top" secondItem="4Nx-wK-1K4" secondAttribute="bottom" constant="8" id="2p1-05-WJr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ayh-nk-bNU" secondAttribute="trailing" id="5LH-3z-Yrv"/>
                             <constraint firstItem="fP3-fX-WzD" firstAttribute="leading" secondItem="x1t-wa-cag" secondAttribute="trailing" constant="13" id="9sO-LX-wWA"/>
                             <constraint firstAttribute="trailing" secondItem="6kG-Wn-I3A" secondAttribute="trailing" id="Byk-sw-Rxk"/>
                             <constraint firstItem="ioY-4f-pcv" firstAttribute="top" secondItem="HJ4-Pw-wSq" secondAttribute="bottom" id="Een-rU-3Wj"/>
@@ -237,6 +249,7 @@
                             <constraint firstItem="igk-HT-BDi" firstAttribute="top" secondItem="fP3-fX-WzD" secondAttribute="bottom" constant="8" id="oJ1-oC-lil"/>
                             <constraint firstItem="igk-HT-BDi" firstAttribute="leading" secondItem="x1t-wa-cag" secondAttribute="trailing" constant="8" id="ohj-0r-1KT"/>
                             <constraint firstItem="L5r-8F-E34" firstAttribute="top" secondItem="gbE-D0-gvy" secondAttribute="bottom" constant="-31" id="pNC-vE-zwD"/>
+                            <constraint firstItem="6kG-Wn-I3A" firstAttribute="top" secondItem="Ayh-nk-bNU" secondAttribute="bottom" constant="-47" id="rpL-DU-b6x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Nx-wK-1K4" secondAttribute="trailing" id="sfA-MT-3pQ"/>
                             <constraint firstItem="gbE-D0-gvy" firstAttribute="leading" secondItem="Q79-kd-0BD" secondAttribute="trailing" constant="-96" id="upn-Nx-UXG"/>
                             <constraint firstItem="Ohc-OA-LW8" firstAttribute="leading" secondItem="mKc-gb-aF4" secondAttribute="leading" id="vTO-WO-8bI"/>
@@ -256,6 +269,7 @@
                         <outlet property="followersTextLabel" destination="L5r-8F-E34" id="JYI-tT-k1r"/>
                         <outlet property="locationButton" destination="4Nx-wK-1K4" id="7o8-0m-lnx"/>
                         <outlet property="locationTextLabel" destination="fP3-fX-WzD" id="STp-4N-ID3"/>
+                        <outlet property="mapRefreshButton" destination="Ayh-nk-bNU" id="7sz-Vz-Qgr"/>
                         <outlet property="mapView" destination="Ohc-OA-LW8" id="iHa-yO-qmh"/>
                         <outlet property="profilePhotoImageView" destination="x1t-wa-cag" id="Sdb-Uz-6YG"/>
                         <outlet property="segController" destination="tsY-5B-3Vu" id="4wT-vF-oDV"/>
@@ -271,8 +285,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aroundme" width="128" height="128"/>
+        <image name="aroundme" width="25" height="25"/>
         <image name="jedd" width="960" height="960"/>
         <image name="purpleblock" width="1242" height="1242"/>
+        <image name="refresh" width="24" height="24"/>
     </resources>
 </document>

@@ -11,5 +11,7 @@
 @interface Photo : PFObject
 
 @property (strong, nonatomic) UIImage *image;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
 
 @end
