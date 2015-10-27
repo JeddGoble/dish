@@ -84,7 +84,7 @@
     self.profilePhotoImageView.clipsToBounds = YES;
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         self.currentUser = user;
         
         
