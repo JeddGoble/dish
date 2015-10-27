@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Photo.h"
+#import "SettingsViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dishesTextLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameTextLabel;
 @property (weak, nonatomic) IBOutlet UITextView *userBioTextView;
@@ -26,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segController;
 @property (weak, nonatomic) IBOutlet UIScrollView *traitsView;
 @property (weak, nonatomic) IBOutlet UIButton *mapRefreshButton;
+
+@property (strong, nonatomic) NSArray *userLikes;
+@property (strong, nonatomic) NSArray *userDislikes;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -79,9 +84,23 @@
     self.profilePhotoImageView.clipsToBounds = YES;
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"yIaf9I89IB" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+    [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         self.currentUser = user;
+        
+        
         self.usernameTextLabel.text = self.currentUser.username;
+        self.userLikes = [[NSArray alloc] initWithArray:user[@"likes_array"]];
+        self.userDislikes = [[NSArray alloc] initWithArray:user[@"dislikes_array"]];
+        self.userBioTextView.text = user[@"bio_string"];
+        self.locationTextLabel.text = user[@"hometown_string"];
+        self.followersCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followerCount_number"]];
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followingCount_number"]];
+        
+        PFFile *profilePicture = user[@"userProfileImage_data"];
+        [profilePicture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+            UIImage *profileImage = [UIImage imageWithData:data];
+            self.profilePhotoImageView.image = profileImage;
+        }];
         
         [self getSixUserPhotos:self.currentUser withCompletion:^(NSArray *photos) {
             for (PFObject *photo in photos) {
@@ -231,11 +250,11 @@
 
     likesLabel.frame = CGRectMake((self.traitsView.frame.size.width / 2) - (likesLabel.frame.size.width / 2), 10, likesLabel.frame.size.width, likesLabel.frame.size.height);
     
-    NSArray *traitTags = [[NSArray alloc] initWithObjects:@"paleo", @"kosher", @"shellfish", @"hamburgers", @"bubble gum", @"rocks", nil];
+//    NSArray *traitTags = [[NSArray alloc] initWithObjects:@"paleo", @"kosher", @"shellfish", @"hamburgers", @"bubble gum", @"rocks", nil];
     CGFloat xOrigin = 20;
     int row = 1;
     
-    for (NSString *trait in traitTags) {
+    for (NSString *trait in self.userLikes) {
         
         
         UILabel *traitsLabel = [self createLabelWithColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0] andText:trait];
@@ -273,10 +292,10 @@
     
     row++;
     
-    NSArray *dislikeTraits = [[NSArray alloc] initWithObjects:@"dieting", @"core data", @"anything healthy", @"xcode autolayout", nil];
+//    NSArray *dislikeTraits = [[NSArray alloc] initWithObjects:@"dieting", @"core data", @"anything healthy", @"xcode autolayout", nil];
     
     
-    for (NSString *dislike in dislikeTraits) {
+    for (NSString *dislike in self.userDislikes) {
         
         
         UILabel *dislikeLabel = [self createLabelWithColor:[UIColor blackColor] andText:dislike];
@@ -390,6 +409,27 @@
     pin.image = [UIImage imageNamed:@"forkpin"];
     
     return pin;
+    
+}
+
+#pragma Prepare for segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"settingsSegue"]) {
+    
+        SettingsViewController *tempVC = segue.destinationViewController;
+        tempVC.currentUser = self.currentUser;
+        
+        tempVC.profileImage = self.profilePhotoImageView.image;
+        
+        
+//    }
+    
+    
+}
+
+- (void)unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentVC {
+    
     
 }
 
