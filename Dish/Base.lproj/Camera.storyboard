@@ -18,10 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-sU-0BY">
-                                <rect key="frame" x="137" y="481" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="135" y="481" width="51" height="30"/>
+                                <state key="normal" title="camera"/>
                                 <connections>
                                     <action selector="takePictureButtonPressed:" destination="nqM-D3-AJW" eventType="touchUpInside" id="nFu-En-Aon"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-mn-hNs">
+                                <rect key="frame" x="126" y="400" width="68" height="30"/>
+                                <state key="normal" title="my library"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="nqM-D3-AJW" eventType="touchUpInside" id="UZA-Re-0lJ"/>
                                 </connections>
                             </button>
                         </subviews>
