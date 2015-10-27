@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Trending View Controller-->
+        <!--Search-->
         <scene sceneID="7n7-ut-Qtu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="4o9-9y-HpR" customClass="TrendingViewController" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                             <constraint firstItem="ZSd-GR-sNf" firstAttribute="leading" secondItem="xIj-5H-N2k" secondAttribute="leadingMargin" constant="-20" id="ygr-Wp-mAR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uca-K8-nts"/>
+                    <navigationItem key="navigationItem" title="Search" id="Uca-K8-nts"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="trendingSearchBar" destination="rpb-LY-Jbd" id="TaQ-5s-ruc"/>

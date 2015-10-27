@@ -34,8 +34,9 @@
 
 //Instanciating array
     self.userArray = [NSArray new];
-
     
+//change the color of the navigation bar
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:103.0/255.0 green:59.0/255.0 blue:183.0/255.0 alpha:1.0f];
    
 }
 
@@ -56,12 +57,20 @@
     PFUser *user = [self.userArray objectAtIndex:indexPath.row];
     PFFile *userProfileImage = user[@"userProfileImage_data"];
     cell.userProfileImage.file = userProfileImage;
-    [cell.userProfileImage loadInBackground];
+  
+    cell.userProfileImage.layer.cornerRadius = cell.userProfileImage.frame.size.height/2;
+    cell.userProfileImage.layer.masksToBounds = YES;
+    cell.userProfileImage.layer.borderWidth = 0;
+    cell.userProfileImage.contentMode = UIViewContentModeScaleAspectFill;
+      [cell.userProfileImage loadInBackground];
+
     
     cell.usernameLabel.text = user[@"username"];
     
+    
     return cell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
