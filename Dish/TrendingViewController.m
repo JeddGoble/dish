@@ -6,9 +6,21 @@
 //  Copyright © 2015 Mobile Makers. All rights reserved.
 //
 
+// Imported Files
 #import "TrendingViewController.h"
+#import "TrendingTableViewCell.h"
+#import <ParseUI/ParseUI.h>
+#import <Parse/Parse.h>
 
-@interface TrendingViewController ()
+// Delegates
+@interface TrendingViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+// Outlets
+@property (weak, nonatomic) IBOutlet UITableView *trendingTableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *trendingSearchBar;
+
+// Properties
+@property NSArray *userArray;
 
 @end
 
@@ -16,22 +28,64 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+// Setting Delegates
+    self.trendingSearchBar.delegate = self;
+
+//Instanciating array
+    self.userArray = [NSArray new];
+
+    
+   
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - TableView Delegate Methods
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+// Creating the same number of rows in the tableview as indexes in the array
+    return self.userArray.count;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TrendingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrendingCell"];
+
+    PFUser *user = [self.userArray objectAtIndex:indexPath.row];
+    PFFile *userProfileImage = user[@"userProfileImage_data"];
+    cell.userProfileImage.file = userProfileImage;
+    [cell.userProfileImage loadInBackground];
+    
+    cell.usernameLabel.text = user[@"username"];
+    
+    return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+
+
+#pragma mark - Searchbar Delegate Methods
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+// Pulling PFUser objects from parse when text in the searchbar is changed
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+
+// Filtering the results for usernames that match the searchtext
+    [query whereKey:@"username" matchesRegex:searchText modifiers:@"i"];
+
+// Storing the userobjects in an array called objects
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+
+// Setting the value of the userArray to objects
+        self.userArray = objects;
+    
+        [self.trendingTableView reloadData];
+    }];
+}
 
 @end
