@@ -196,16 +196,6 @@
                                     <segue destination="qLU-4u-kP5" kind="modal" identifier="settingsSegue" id="m59-sg-Hgt"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyI-Ea-7Jy">
-                                <rect key="frame" x="107" y="78" width="197" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="sh0-Ug-ixJ"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -229,14 +219,12 @@
                             <constraint firstItem="fP3-fX-WzD" firstAttribute="trailing" secondItem="mKc-gb-aF4" secondAttribute="trailingMargin" constant="4" id="M2E-Xy-IJD"/>
                             <constraint firstAttribute="trailing" secondItem="G1O-45-0UI" secondAttribute="trailing" id="O6N-rx-gnz"/>
                             <constraint firstAttribute="trailing" secondItem="Ohc-OA-LW8" secondAttribute="trailing" id="Pel-Kg-I7A"/>
-                            <constraint firstItem="OyI-Ea-7Jy" firstAttribute="top" secondItem="fP3-fX-WzD" secondAttribute="bottom" id="Qmn-4P-4mX"/>
                             <constraint firstItem="HtJ-XL-Gl2" firstAttribute="centerY" secondItem="mKc-gb-aF4" secondAttribute="centerY" id="SKG-Xq-Swl"/>
                             <constraint firstItem="7ig-OU-wqK" firstAttribute="leading" secondItem="Q79-kd-0BD" secondAttribute="trailing" constant="-76" id="Tu7-Fk-B4V"/>
                             <constraint firstItem="fP3-fX-WzD" firstAttribute="top" secondItem="HNr-tW-6M2" secondAttribute="bottom" constant="8" id="W9d-Gd-QSd"/>
                             <constraint firstItem="HBs-f5-yuV" firstAttribute="top" secondItem="M4w-U3-eJ7" secondAttribute="bottom" constant="-4" id="YTz-u5-9Ec"/>
                             <constraint firstItem="Ohc-OA-LW8" firstAttribute="top" secondItem="tsY-5B-3Vu" secondAttribute="bottom" constant="17" id="aEI-2g-e9o"/>
                             <constraint firstItem="HNr-tW-6M2" firstAttribute="top" secondItem="HJ4-Pw-wSq" secondAttribute="bottom" constant="8" id="apJ-m3-M0Z"/>
-                            <constraint firstItem="OyI-Ea-7Jy" firstAttribute="leading" secondItem="x1t-wa-cag" secondAttribute="trailing" constant="8" id="c7t-yC-WlR"/>
                             <constraint firstItem="y0s-EJ-uYS" firstAttribute="top" secondItem="6kG-Wn-I3A" secondAttribute="bottom" id="cPQ-ep-huR"/>
                             <constraint firstItem="x1t-wa-cag" firstAttribute="top" secondItem="HNr-tW-6M2" secondAttribute="bottom" constant="8" id="dck-jx-Etv"/>
                             <constraint firstItem="L5r-8F-E34" firstAttribute="centerX" secondItem="mKc-gb-aF4" secondAttribute="centerX" id="eJG-i6-acU"/>
@@ -246,7 +234,6 @@
                             <constraint firstItem="6kG-Wn-I3A" firstAttribute="top" secondItem="tsY-5B-3Vu" secondAttribute="bottom" constant="17" id="hJp-9w-6Gz"/>
                             <constraint firstItem="HBs-f5-yuV" firstAttribute="leading" secondItem="M4w-U3-eJ7" secondAttribute="trailing" constant="-78" id="iIt-eO-4o6"/>
                             <constraint firstItem="gbE-D0-gvy" firstAttribute="top" secondItem="mKc-gb-aF4" secondAttribute="top" id="ieD-qL-yOd"/>
-                            <constraint firstAttribute="trailing" secondItem="OyI-Ea-7Jy" secondAttribute="trailing" constant="16" id="ij7-NL-9zt"/>
                             <constraint firstItem="7ig-OU-wqK" firstAttribute="top" secondItem="Q79-kd-0BD" secondAttribute="bottom" constant="-4" id="j9h-CI-aNx"/>
                             <constraint firstItem="ier-4g-KvQ" firstAttribute="top" secondItem="HJ4-Pw-wSq" secondAttribute="bottom" id="jYM-ae-lYy"/>
                             <constraint firstItem="tsY-5B-3Vu" firstAttribute="leading" secondItem="mKc-gb-aF4" secondAttribute="leadingMargin" constant="11" id="mFL-OO-wSF"/>
