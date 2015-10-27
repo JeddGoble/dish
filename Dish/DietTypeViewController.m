@@ -79,6 +79,14 @@
     [self.photo setObject:[[self.arrayOfDietTypes objectAtIndex:5] objectForKey:@"isDietType"] forKey:@"dietTypeLowCarb_bool"];
     [self.photo setObject:[[self.arrayOfDietTypes objectAtIndex:6] objectForKey:@"isDietType"] forKey:@"dietTypeHealthy_bool"];
     
+    [self.photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"The object has been saved");
+        } else {
+            NSLog(@"There was a problem, check error.description");
+        }
+    }];
+    
 }
 
 

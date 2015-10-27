@@ -32,7 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.photo = [PFObject objectWithClassName:@"Photo"];
-//    [self.photo setObject:self.image forKey:@"photo_data"];
+    [self.photo setObject:UIImageJPEGRepresentation(self.image, 1.0) forKey:@"photo_data"];
     self.imageView.image = self.image;
     [self.oneStarButton setImage:[UIImage imageNamed:@"starFilled"] forState:UIControlStateHighlighted];
     [self.twoStarButton setImage:[UIImage imageNamed:@"starFilled"] forState:UIControlStateHighlighted];
