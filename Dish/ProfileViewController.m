@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Photo.h"
 #import "SettingsViewController.h"
+#import "FullScreenPhotoViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -421,6 +422,11 @@
 #pragma Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    
+    
+    
     if ([segue.identifier isEqualToString:@"settingsSegue"]) {
     
         SettingsViewController *tempVC = segue.destinationViewController;
@@ -429,6 +435,9 @@
         tempVC.profileImage = self.profilePhotoImageView.image;
         
         
+    } else if ([segue.identifier isEqualToString:@"singlePhotoSegue"]) {
+        
+        FullScreenPhotoViewController *tempVC = segue.destinationViewController;
     }
     
     
