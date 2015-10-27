@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameTextLabel;
-@property (weak, nonatomic) IBOutlet UITextView *userBioTextView;
+@property (weak, nonatomic) IBOutlet UITextView *biographyTextView;
 @property (weak, nonatomic) IBOutlet UILabel *locationTextLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segController;
@@ -69,6 +69,12 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self.collectionView reloadData];
+    
+}
+
 - (void) initiatePageWithFeed {
     
     [self.spinner startAnimating];
@@ -91,8 +97,8 @@
         self.usernameTextLabel.text = self.currentUser.username;
         self.userLikes = [[NSArray alloc] initWithArray:user[@"likes_array"]];
         self.userDislikes = [[NSArray alloc] initWithArray:user[@"dislikes_array"]];
-        self.userBioTextView.text = user[@"bio_string"];
         self.locationTextLabel.text = user[@"hometown_string"];
+        self.biographyTextView.text = user[@"bio_string"];
         self.followersCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followerCount_number"]];
         self.followingCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followingCount_number"]];
         
@@ -415,7 +421,7 @@
 #pragma Prepare for segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"settingsSegue"]) {
+    if ([segue.identifier isEqualToString:@"settingsSegue"]) {
     
         SettingsViewController *tempVC = segue.destinationViewController;
         tempVC.currentUser = self.currentUser;
@@ -423,7 +429,7 @@
         tempVC.profileImage = self.profilePhotoImageView.image;
         
         
-//    }
+    }
     
     
 }
