@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostPhotoViewController.h"
 
 @interface SetLocationViewController : UIViewController
+@property PostPhotoViewController *ppvc;
 
 @end

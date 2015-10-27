@@ -10,5 +10,6 @@
 
 @interface PostPhotoViewController : UIViewController
 @property UIImage *image;
+@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 
 @end

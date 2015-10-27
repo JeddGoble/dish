@@ -10,6 +10,4 @@
 
 @interface Photo : PFObject
 
-@property (strong, nonatomic) UIImage *image;
-
 @end
