@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @interface AppDelegate ()
 
@@ -18,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [PFImageView class];
     [Parse enableLocalDatastore];
     
     [Parse setApplicationId:@"7j788icRslnX8sZ7rOI8ukjNd5kKUCiI359DmbDv"
