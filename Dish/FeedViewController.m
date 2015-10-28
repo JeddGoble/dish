@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayOfPhotos;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFUser *userForFilter;
+@property NSDate *currentDate;
 
 @end
 
@@ -22,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.currentDate = [NSDate date];
     
     if (self.arrayOfUsersFollowing == nil) {
         self.arrayOfUsersFollowing = [[NSMutableArray alloc] init];
@@ -51,11 +54,12 @@
                 }
 
                 PFQuery *photoQuery = [PFQuery queryWithClassName:@"Photo"];
+                [photoQuery includeKey:@"User_pointer"];
                 [photoQuery whereKey:@"User_pointer" containedIn:self.arrayOfUsersFollowing];
                 [photoQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                     if (!error) {
                         for (PFObject *object in objects) {
-                            [self.arrayOfPhotos addObject:[object objectForKey:@"photo_data"]];
+                            [self.arrayOfPhotos addObject:object];
                         }
                         [self.tableView reloadData];
                     }
@@ -67,12 +71,6 @@
         
     }];
     
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -83,6 +81,46 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *header = [[UIView alloc] init];
+    header.backgroundColor = [UIColor whiteColor];
+    header.alpha = 0.9;
+    
+    UILabel *userName = [[UILabel alloc] init];
+    userName.frame = CGRectMake(50, 0, 100, 50);
+    userName.text = [[[self.arrayOfPhotos objectAtIndex:section] objectForKey:@"User_pointer"] objectForKey:@"username"];
+    userName.textColor = [UIColor blackColor];
+    
+    PFFile *photoFile = [[[self.arrayOfPhotos objectAtIndex:section] objectForKey:@"User_pointer"] objectForKey:@"userProfileImage_data"];
+    [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+            UIImageView *userImage = [[UIImageView alloc] init];
+            userImage.image = image;
+            userImage.frame = CGRectMake(5,5,40,40);
+            userImage.layer.cornerRadius = 20;
+            userImage.clipsToBounds = YES;
+            [header addSubview:userImage];
+        }
+    }];
+    
+    PFObject *photo = [self.arrayOfPhotos objectAtIndex:section];
+    NSDate *photoDate = photo.createdAt;
+    NSTimeInterval secondsAgo = [self.currentDate timeIntervalSinceDate:self.currentDate];
+    
+    UILabel *dateLabel = [[UILabel alloc] init];
+    dateLabel.textColor = [UIColor blackColor];
+    dateLabel.frame = CGRectMake(self.view.frame.size.width - 50, 0, 50, 50);
+    
+    if (secondsAgo < 3600) {
+        dateLabel.text = [NSString stringWithFormat:@"%im",(int)(secondsAgo / 60)];
+    } else if (secondsAgo < 86400) {
+        dateLabel.text = [NSString stringWithFormat:@"%ih",(int)(secondsAgo / 3600)];
+    } else {
+        dateLabel.text = [NSString stringWithFormat:@"%id",(int)(secondsAgo / 86400)];
+    }
+    
+    [header addSubview:userName];
+    [header addSubview:dateLabel];
+    
     return header;
 }
 
@@ -101,7 +139,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell"];
     cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-    PFFile *photoFile = [self.arrayOfPhotos objectAtIndex:indexPath.section];
+    PFFile *photoFile = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photo_data"];
     [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             UIImage *image = [UIImage imageWithData:data];
