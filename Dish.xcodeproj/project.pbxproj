@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04014DBE1BDF1CA100C2DCC5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04014DBD1BDF1CA100C2DCC5 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		04482EFE1BE01C1F008C1CFD /* FullScreenPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04482EFD1BE01C1F008C1CFD /* FullScreenPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
-		048506401BDDC1B000E3443E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485063F1BDDC1B000E3443E /* Photo.m */; settings = {ASSET_TAGS = (); }; };
+		04014DBE1BDF1CA100C2DCC5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04014DBD1BDF1CA100C2DCC5 /* SettingsViewController.m */; };
+		04482EFE1BE01C1F008C1CFD /* FullScreenPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04482EFD1BE01C1F008C1CFD /* FullScreenPhotoViewController.m */; };
+		048506401BDDC1B000E3443E /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485063F1BDDC1B000E3443E /* Photo.m */; };
 		048506421BDDE56300E3443E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048506411BDDE56300E3443E /* MapKit.framework */; };
 		04A869CC1BD99D8500D7C883 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A869CB1BD99D8500D7C883 /* main.m */; };
 		04A869CF1BD99D8500D7C883 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A869CE1BD99D8500D7C883 /* AppDelegate.m */; };
@@ -46,13 +46,14 @@
 		04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */; };
 		04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A471BD9A7DA00D7C883 /* Accounts.framework */; };
 		04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A491BD9A7DF00D7C883 /* Social.framework */; };
-		04BEEF1C1BDFD086008A5A7D /* PhotoViewFullscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BEEF1B1BDFD086008A5A7D /* PhotoViewFullscreen.storyboard */; };
 		AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1A543B1BDEF1820095B087 /* Profile.storyboard */; };
 		AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A543F1BDF28D80095B087 /* DishTypeViewController.m */; };
 		AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A54421BDF39A50095B087 /* DietTypeViewController.m */; };
 		ACDDC2AD1BDEBF5000C8AA7F /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */; };
 		ACFD77651BDDC3E500511AD3 /* PostPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */; };
 		CD8CABD01BE0159A00E9B48C /* TrendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */; };
+		CD8CABD81BE06E8500E9B48C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8CABD71BE06E8500E9B48C /* LoginViewController.m */; };
+		CD8CABDA1BE06EE100E9B48C /* LoginAndRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8CABD91BE06EE100E9B48C /* LoginAndRegistration.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,9 @@
 		ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostPhotoViewController.m; sourceTree = "<group>"; };
 		CD8CABCE1BE0159A00E9B48C /* TrendingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingTableViewCell.h; sourceTree = "<group>"; };
 		CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingTableViewCell.m; sourceTree = "<group>"; };
+		CD8CABD61BE06E8500E9B48C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		CD8CABD71BE06E8500E9B48C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		CD8CABD91BE06EE100E9B48C /* LoginAndRegistration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginAndRegistration.storyboard; path = ../LoginAndRegistration.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 		04A86A121BD9A20100D7C883 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD8CABD91BE06EE100E9B48C /* LoginAndRegistration.storyboard */,
 				04A869D31BD99D8500D7C883 /* Main.storyboard */,
 				04A86A211BD9A29300D7C883 /* Feed.storyboard */,
 				04A86A1E1BD9A28100D7C883 /* Trending.storyboard */,
@@ -282,6 +287,8 @@
 				CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */,
 				0485063E1BDDC1B000E3443E /* Photo.h */,
 				0485063F1BDDC1B000E3443E /* Photo.m */,
+				CD8CABD61BE06E8500E9B48C /* LoginViewController.h */,
+				CD8CABD71BE06E8500E9B48C /* LoginViewController.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -461,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD8CABDA1BE06EE100E9B48C /* LoginAndRegistration.storyboard in Resources */,
 				04A869DA1BD99D8500D7C883 /* LaunchScreen.storyboard in Resources */,
 				04A86A1D1BD9A27400D7C883 /* Camera.storyboard in Resources */,
 				AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */,
@@ -501,6 +509,7 @@
 				048506401BDDC1B000E3443E /* Photo.m in Sources */,
 				CD8CABD01BE0159A00E9B48C /* TrendingTableViewCell.m in Sources */,
 				AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */,
+				CD8CABD81BE06E8500E9B48C /* LoginViewController.m in Sources */,
 				04A86A111BD99FC100D7C883 /* ProfileViewController.m in Sources */,
 				AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */,
 				04A869CC1BD99D8500D7C883 /* main.m in Sources */,
