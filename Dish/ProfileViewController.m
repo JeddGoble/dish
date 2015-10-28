@@ -131,7 +131,6 @@
     }];
 }
 
-
 - (void) getSixUserPhotos:(PFUser *)currentUser withCompletion:(void (^)(NSArray *photos))complete {
     
     PFQuery *photoIDQuery = [PFQuery queryWithClassName:@"Photo"];
