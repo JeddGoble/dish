@@ -54,6 +54,7 @@
     
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
     
+    
     self.mapView.hidden = YES;
     self.traitsView.hidden = YES;
     self.locationButton.hidden = YES;

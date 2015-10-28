@@ -8,9 +8,7 @@
 
 #import "FullScreenPhotoViewController.h"
 
-@interface FullScreenPhotoViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface FullScreenPhotoViewController ()
 
 
 @end
@@ -25,17 +23,7 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-    
-    return cell;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 0;
-}
 
 
 @end
