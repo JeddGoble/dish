@@ -7,8 +7,14 @@
 //
 
 #import "FeedViewController.h"
+#import <Parse/Parse.h>
 
-@interface FeedViewController ()
+@interface FeedViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) PFUser *currentUser;
+@property (strong, nonatomic) NSMutableArray *arrayOfUsersFollowing;
+@property (strong, nonatomic) NSMutableArray *arrayOfPhotos;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) PFUser *userForFilter;
 
 @end
 
@@ -16,22 +22,96 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if (self.arrayOfUsersFollowing == nil) {
+        self.arrayOfUsersFollowing = [[NSMutableArray alloc] init];
+    }
+    
+    if (self.arrayOfPhotos == nil) {
+        self.arrayOfPhotos = [[NSMutableArray alloc] init];
+    }
+    
+    [self queryNewPhotos];
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)queryNewPhotos {
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+        self.currentUser = user;
+        
+        PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
+        [followQuery whereKey:@"followedBy_pointer" equalTo:self.currentUser];
+        [followQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects) {
+                    [self.arrayOfUsersFollowing addObject:[object objectForKey:@"following_pointer"]];
+                }
+
+                PFQuery *photoQuery = [PFQuery queryWithClassName:@"Photo"];
+                [photoQuery whereKey:@"User_pointer" containedIn:self.arrayOfUsersFollowing];
+                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                    if (!error) {
+                        for (PFObject *object in objects) {
+                            [self.arrayOfPhotos addObject:[object objectForKey:@"photo_data"]];
+                        }
+                        [self.tableView reloadData];
+                    }
+                }];
+            } else {
+                NSLog(@"Error");
+            }
+        }];
+        
+    }];
+    
+    
+    
+    
+    
+    
+    
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50;
 }
-*/
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *header = [[UIView alloc] init];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.view.frame.size.width;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.arrayOfPhotos.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell"];
+    cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+    PFFile *photoFile = [self.arrayOfPhotos objectAtIndex:indexPath.section];
+    [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+            UIImageView *photoImage = [[UIImageView alloc] initWithImage:image];
+            photoImage.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+            [cell addSubview:photoImage];
+        }
+    }];
+        return cell;
+}
+
 
 @end

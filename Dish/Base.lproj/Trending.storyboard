@@ -8,7 +8,7 @@
         <!--Search-->
         <scene sceneID="7n7-ut-Qtu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="4o9-9y-HpR" customClass="TrendingViewController" sceneMemberID="viewController">
+                <viewController id="4o9-9y-HpR" customClass="TrendingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FwY-b2-u9q"/>
                         <viewControllerLayoutGuide type="bottom" id="GbE-vd-R3J"/>

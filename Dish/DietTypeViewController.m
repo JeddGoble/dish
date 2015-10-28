@@ -11,6 +11,7 @@
 @interface DietTypeViewController () < UITableViewDelegate , UITableViewDataSource >
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *arrayOfDietTypes;
+@property (strong, nonatomic) PFUser *currentUser;
 
 @end
 
@@ -20,6 +21,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+        self.currentUser = user;
+    }];
     
     self.arrayOfDietTypes = [[NSMutableArray alloc] initWithObjects:
                              @{@"dietType" : @"Vegan",
@@ -78,6 +84,7 @@
     [self.photo setObject:[[self.arrayOfDietTypes objectAtIndex:4] objectForKey:@"isDietType"] forKey:@"dietTypePaleo_bool"];
     [self.photo setObject:[[self.arrayOfDietTypes objectAtIndex:5] objectForKey:@"isDietType"] forKey:@"dietTypeLowCarb_bool"];
     [self.photo setObject:[[self.arrayOfDietTypes objectAtIndex:6] objectForKey:@"isDietType"] forKey:@"dietTypeHealthy_bool"];
+    [self.photo setObject:self.currentUser forKey:@"User_pointer"];
     
     [self.photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
