@@ -7,6 +7,7 @@
 //
 
 #import "FullScreenPhotoViewController.h"
+#import "Photo.h"
 
 @interface FullScreenPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;

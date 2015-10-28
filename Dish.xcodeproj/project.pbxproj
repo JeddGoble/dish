@@ -46,6 +46,7 @@
 		04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */; };
 		04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A471BD9A7DA00D7C883 /* Accounts.framework */; };
 		04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A491BD9A7DF00D7C883 /* Social.framework */; };
+		04B4B7C91BE1764B000B5990 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4B7C81BE1764B000B5990 /* CommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1A543B1BDEF1820095B087 /* Profile.storyboard */; };
 		AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A543F1BDF28D80095B087 /* DishTypeViewController.m */; };
 		AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A54421BDF39A50095B087 /* DietTypeViewController.m */; };
@@ -126,6 +127,8 @@
 		04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		04A86A471BD9A7DA00D7C883 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		04A86A491BD9A7DF00D7C883 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		04B4B7C71BE1764B000B5990 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		04B4B7C81BE1764B000B5990 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		AC1A543C1BDEF1820095B087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		AC1A543E1BDF28D80095B087 /* DishTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTypeViewController.h; sourceTree = "<group>"; };
 		AC1A543F1BDF28D80095B087 /* DishTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTypeViewController.m; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				04014DBD1BDF1CA100C2DCC5 /* SettingsViewController.m */,
 				04482EFC1BE01C1F008C1CFD /* FullScreenPhotoViewController.h */,
 				04482EFD1BE01C1F008C1CFD /* FullScreenPhotoViewController.m */,
+				04B4B7C71BE1764B000B5990 /* CommentsViewController.h */,
+				04B4B7C81BE1764B000B5990 /* CommentsViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				048506401BDDC1B000E3443E /* Photo.m in Sources */,
 				CD8CABD01BE0159A00E9B48C /* TrendingTableViewCell.m in Sources */,
 				AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */,
+				04B4B7C91BE1764B000B5990 /* CommentsViewController.m in Sources */,
 				04A86A111BD99FC100D7C883 /* ProfileViewController.m in Sources */,
 				AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */,
 				04A869CC1BD99D8500D7C883 /* main.m in Sources */,
