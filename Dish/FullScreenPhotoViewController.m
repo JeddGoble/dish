@@ -9,6 +9,13 @@
 #import "FullScreenPhotoViewController.h"
 
 @interface FullScreenPhotoViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
+@property (weak, nonatomic) IBOutlet UILabel *dishNameLabel;
+
+
 
 
 @end
@@ -24,6 +31,13 @@
 
 
 
+- (IBAction)onBackButtonPressed:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
 
 
 @end

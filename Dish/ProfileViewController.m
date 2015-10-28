@@ -52,12 +52,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Photo *testPhoto = [Photo new];
-    testPhoto.photoDesc_string = @"Testing photo subclass";
-    [testPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        NSLog(@"Successfully saved testPhoto\n");
-        NSLog(@"%@", testPhoto.photoDesc_string);
-    }];
+//    Photo *testPhoto = [Photo new];
+//    testPhoto.photoDesc_string = @"Testing photo subclass";
+//    [testPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        NSLog(@"Successfully saved testPhoto\n");
+//        NSLog(@"%@", testPhoto.photoDesc_string);
+//    }];
     
     
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
