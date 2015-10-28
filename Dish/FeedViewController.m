@@ -124,6 +124,8 @@
     return header;
 }
 
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
@@ -131,7 +133,7 @@
     }
     
     if (indexPath.row == 1) {
-        return 100;
+        return 130;
         
     }
     
@@ -236,6 +238,28 @@
                 break;
                 
         }
+            
+            UILabel *numberOfLikes = [[UILabel alloc] init];
+            numberOfLikes.frame = CGRectMake(115, 41, 150, 20);
+            numberOfLikes.text = [NSString stringWithFormat:@"%i likes", [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"numberOfLikes_number"] intValue]];
+            numberOfLikes.textColor = [UIColor purpleColor];
+            [cell addSubview:numberOfLikes];
+            
+            
+            
+            
+            UILabel *photoDesc = [[UILabel alloc] init];
+            photoDesc.numberOfLines = 0;
+            photoDesc.frame = CGRectMake(10, 70, self.view.frame.size.width - 20, 80);
+            photoDesc.text = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoDesc_string"];
+            photoDesc.textColor = [UIColor blackColor];
+            photoDesc.font = [UIFont systemFontOfSize:12];
+            [photoDesc sizeToFit];
+            [cell addSubview:photoDesc];
+            
+            [cell layoutSubviews];
+            
+        
         return cell;
         } else {
             return cell;
