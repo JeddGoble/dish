@@ -37,7 +37,7 @@
     
 //change the color of the navigation bar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:103.0/255.0 green:59.0/255.0 blue:183.0/255.0 alpha:1.0f];
-   
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 #pragma mark - TableView Delegate Methods
