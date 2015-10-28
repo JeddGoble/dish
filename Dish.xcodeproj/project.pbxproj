@@ -46,7 +46,6 @@
 		04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */; };
 		04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A471BD9A7DA00D7C883 /* Accounts.framework */; };
 		04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A491BD9A7DF00D7C883 /* Social.framework */; };
-		04BEEF1C1BDFD086008A5A7D /* PhotoViewFullscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BEEF1B1BDFD086008A5A7D /* PhotoViewFullscreen.storyboard */; };
 		AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1A543B1BDEF1820095B087 /* Profile.storyboard */; };
 		AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A543F1BDF28D80095B087 /* DishTypeViewController.m */; };
 		AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A54421BDF39A50095B087 /* DietTypeViewController.m */; };
@@ -419,7 +418,7 @@
 				TargetAttributes = {
 					04A869C61BD99D8500D7C883 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 4T6L9AH26Z;
+						DevelopmentTeam = T85QJN383J;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;

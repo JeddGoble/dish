@@ -92,7 +92,7 @@
     self.profilePhotoImageView.clipsToBounds = YES;
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+    [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         self.currentUser = user;
         
         
@@ -101,6 +101,7 @@
         self.userDislikes = [[NSArray alloc] initWithArray:user[@"dislikes_array"]];
         self.locationTextLabel.text = user[@"hometown_string"];
         self.biographyTextView.text = user[@"bio_string"];
+        self.biographyTextView.textColor = [UIColor whiteColor];
         self.followersCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followerCount_number"]];
         self.followingCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followingCount_number"]];
         
