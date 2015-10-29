@@ -211,10 +211,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W35-cR-aeD">
+                                <rect key="frame" x="256" y="20" width="52" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="Fhc-Ya-d8L"/>
+                                    <constraint firstAttribute="height" constant="30" id="SLG-iD-yyx"/>
+                                </constraints>
+                                <state key="normal" title="Follow">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onFollowButtonTapped:" destination="snQ-Vd-dvl" eventType="touchUpInside" id="boy-wB-lXf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y0s-EJ-uYS" firstAttribute="top" secondItem="4Nx-wK-1K4" secondAttribute="bottom" constant="8" id="2p1-05-WJr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W35-cR-aeD" secondAttribute="trailing" constant="-8" id="318-M7-LeM"/>
                             <constraint firstItem="Q79-kd-0BD" firstAttribute="top" secondItem="x1t-wa-cag" secondAttribute="bottom" constant="12" id="3IB-N8-1Sv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ayh-nk-bNU" secondAttribute="trailing" id="5LH-3z-Yrv"/>
                             <constraint firstItem="fP3-fX-WzD" firstAttribute="leading" secondItem="x1t-wa-cag" secondAttribute="trailing" constant="13" id="9sO-LX-wWA"/>
@@ -235,6 +249,7 @@
                             <constraint firstItem="yP4-d3-BzP" firstAttribute="top" secondItem="mKc-gb-aF4" secondAttribute="topMargin" constant="21" id="MiH-Cc-EP6"/>
                             <constraint firstAttribute="trailing" secondItem="G1O-45-0UI" secondAttribute="trailing" id="O6N-rx-gnz"/>
                             <constraint firstAttribute="trailing" secondItem="Ohc-OA-LW8" secondAttribute="trailing" id="Pel-Kg-I7A"/>
+                            <constraint firstItem="W35-cR-aeD" firstAttribute="top" secondItem="HJ4-Pw-wSq" secondAttribute="bottom" id="QZF-rD-FdP"/>
                             <constraint firstItem="HtJ-XL-Gl2" firstAttribute="centerY" secondItem="mKc-gb-aF4" secondAttribute="centerY" id="SKG-Xq-Swl"/>
                             <constraint firstItem="7ig-OU-wqK" firstAttribute="leading" secondItem="Q79-kd-0BD" secondAttribute="trailing" constant="-76" id="Tu7-Fk-B4V"/>
                             <constraint firstItem="fP3-fX-WzD" firstAttribute="top" secondItem="HNr-tW-6M2" secondAttribute="bottom" constant="8" id="W9d-Gd-QSd"/>
@@ -277,6 +292,7 @@
                         <outlet property="collectionView" destination="G1O-45-0UI" id="RvP-zU-Ktf"/>
                         <outlet property="dishesCountLabel" destination="Q79-kd-0BD" id="eTo-Gq-9VG"/>
                         <outlet property="dishesTextLabel" destination="7ig-OU-wqK" id="MI7-Ob-lIx"/>
+                        <outlet property="followButton" destination="W35-cR-aeD" id="kKe-Gz-OiO"/>
                         <outlet property="followersCountLabel" destination="UDS-5y-snL" id="fAh-nU-KDy"/>
                         <outlet property="followersTextLabel" destination="L5r-8F-E34" id="JYI-tT-k1r"/>
                         <outlet property="followingCountLabel" destination="M4w-U3-eJ7" id="ziZ-Or-4qh"/>

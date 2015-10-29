@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segController;
 @property (weak, nonatomic) IBOutlet UIScrollView *traitsView;
 @property (weak, nonatomic) IBOutlet UIButton *mapRefreshButton;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @property (strong, nonatomic) NSArray *userLikes;
 @property (strong, nonatomic) NSArray *userDislikes;
@@ -343,6 +344,10 @@
     return label;
     
 }
+
+- (IBAction)onFollowButtonTapped:(UIButton *)sender {
+}
+
 
 
 
