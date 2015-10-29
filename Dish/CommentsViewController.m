@@ -31,12 +31,23 @@
     [getComments findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         [self.comments addObject:self.viewingPhoto.photoDesc_string];
         
-        for (PFObject *comment in objects) {
-            [self.comments addObject:comment[@"comment_string"]];
+        for (PFObject *commentObject in objects) {
+            PFQuery *getUsernames = [PFQuery queryWithClassName:@"_User"];
+            
+            
+            
+            [getUsernames getObjectInBackgroundWithId:[commentObject[@"User_pointer"] objectId] block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+                NSString *commenterName = user[@"username"];
+                NSString *commentString = commentObject[@"comment_string"];
+                NSString *fullCommentString = [NSString stringWithFormat:@"%@: %@", commenterName, commentString];
+                [self.comments addObject:fullCommentString];
+                [self.tableView reloadData];
+            }];
+            
             
         }
         
-        [self.tableView reloadData];
+        
     }];
     
 }
@@ -59,7 +70,7 @@
 
 - (IBAction)onBackButtonPressed:(UIButton *)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
