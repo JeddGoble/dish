@@ -532,6 +532,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="E8T-mf-rTS"/>
                     <connections>
+                        <outlet property="biographyTextView" destination="GZj-U2-niy" id="0F9-bu-ik7"/>
                         <outlet property="emailTextField" destination="dhy-6t-1NG" id="4U1-Zv-1lN"/>
                         <outlet property="locationTextField" destination="da6-us-KCg" id="mll-03-GJa"/>
                         <outlet property="profileImageView" destination="mAa-T2-FmP" id="Mg9-fB-TiE"/>
@@ -903,7 +904,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ib2-vH-5qj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1596" y="831"/>
+            <point key="canvasLocation" x="1650" y="831"/>
         </scene>
     </scenes>
     <resources>
