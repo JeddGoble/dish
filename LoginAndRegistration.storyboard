@@ -19,62 +19,125 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6q-3D-17k">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="43" y="123" width="299" height="36"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="72" y="212" width="299" height="36"/>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVX-CK-4M6">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="43" y="187" width="299" height="36"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="72" y="264" width="299" height="36"/>
                                 </variation>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnK-xH-fcg">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="21" y="222.5" width="360" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="GkF-mI-kcL"/>
+                                    <constraint firstAttribute="width" constant="340" id="yjj-fD-ubo"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GkF-mI-kcL"/>
+                                        <exclude reference="yjj-fD-ubo"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="300" width="340" height="1"/>
+                                    <mask key="constraints">
+                                        <include reference="GkF-mI-kcL"/>
+                                        <include reference="yjj-fD-ubo"/>
+                                    </mask>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4p-wg-79t">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="158" width="360" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="BKv-NE-WvG"/>
+                                    <constraint firstAttribute="height" constant="1" id="eYh-ge-rva"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BKv-NE-WvG"/>
+                                        <exclude reference="eYh-ge-rva"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="BKv-NE-WvG"/>
+                                        <include reference="eYh-ge-rva"/>
+                                    </mask>
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-2R-4ei">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.18431372549019609" green="0.10588235294117647" blue="0.32941176470588235" alpha="0.49299777476780188" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="118" y="330" width="165" height="37"/>
+                                    <rect key="frame" x="119" y="409" width="165" height="37"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iao-ea-FEa">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.18556213169999999" green="0.1052767791" blue="0.33114823170000002" alpha="0.49299777480000001" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                 <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.503640189628483" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="118" y="403" width="165" height="37"/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="118" y="475" width="165" height="37"/>
                                 </variation>
+                                <connections>
+                                    <segue destination="2xJ-I3-w84" kind="show" id="X7F-ZO-WUT"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="crm-Tc-ahl">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="31" y="215" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="ha1-ER-owY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="31" y="267" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" Dishnewlogin" translatesAutoresizingMaskIntoConstraints="NO" id="dfk-S0-EgN">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="92" y="73" width="219" height="82"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.40392156862745099" green="0.23137254901960785" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="OVX-CK-4M6" firstAttribute="top" secondItem="R4p-wg-79t" secondAttribute="bottom" constant="16" id="6bw-7M-3YB"/>
+                            <constraint firstItem="R4p-wg-79t" firstAttribute="top" secondItem="crm-Tc-ahl" secondAttribute="bottom" constant="2" id="8Es-8G-mDL"/>
+                            <constraint firstItem="R4p-wg-79t" firstAttribute="centerX" secondItem="Iao-ea-FEa" secondAttribute="centerX" id="9yd-Ma-VP4"/>
+                            <constraint firstItem="R4p-wg-79t" firstAttribute="top" secondItem="8lt-hd-IAo" secondAttribute="top" constant="247" id="O3Z-94-trz"/>
+                            <constraint firstItem="R4p-wg-79t" firstAttribute="centerX" secondItem="8lt-hd-IAo" secondAttribute="centerX" id="RHT-pJ-BTb"/>
+                            <constraint firstItem="R4p-wg-79t" firstAttribute="bottom" secondItem="S6q-3D-17k" secondAttribute="bottom" id="cGt-Lk-djr"/>
+                            <constraint firstItem="NnK-xH-fcg" firstAttribute="centerY" secondItem="8lt-hd-IAo" secondAttribute="centerY" id="cj5-0v-zeo"/>
+                            <constraint firstItem="NnK-xH-fcg" firstAttribute="centerX" secondItem="8lt-hd-IAo" secondAttribute="centerX" id="jKn-p8-VkF"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="S6q-3D-17k"/>
@@ -83,6 +146,19 @@
                                 <exclude reference="R4p-wg-79t"/>
                                 <exclude reference="TAW-2R-4ei"/>
                                 <exclude reference="Iao-ea-FEa"/>
+                                <exclude reference="crm-Tc-ahl"/>
+                                <exclude reference="ha1-ER-owY"/>
+                                <exclude reference="dfk-S0-EgN"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8Es-8G-mDL"/>
+                                <exclude reference="9yd-Ma-VP4"/>
+                                <exclude reference="O3Z-94-trz"/>
+                                <exclude reference="RHT-pJ-BTb"/>
+                                <exclude reference="cGt-Lk-djr"/>
+                                <exclude reference="6bw-7M-3YB"/>
+                                <exclude reference="cj5-0v-zeo"/>
+                                <exclude reference="jKn-p8-VkF"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -93,13 +169,260 @@
                                 <include reference="R4p-wg-79t"/>
                                 <include reference="TAW-2R-4ei"/>
                                 <include reference="Iao-ea-FEa"/>
+                                <include reference="crm-Tc-ahl"/>
+                                <include reference="ha1-ER-owY"/>
+                                <include reference="dfk-S0-EgN"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8Es-8G-mDL"/>
+                                <include reference="9yd-Ma-VP4"/>
+                                <include reference="O3Z-94-trz"/>
+                                <include reference="RHT-pJ-BTb"/>
+                                <include reference="cGt-Lk-djr"/>
+                                <include reference="6bw-7M-3YB"/>
+                                <include reference="cj5-0v-zeo"/>
+                                <include reference="jKn-p8-VkF"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="OVX-CK-4M6" id="PDZ-JM-Fv4"/>
+                        <outlet property="usernameTextField" destination="S6q-3D-17k" id="jh8-BR-x9U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vr-TW-lU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256.5" y="264"/>
+            <point key="canvasLocation" x="256.5" y="285"/>
+        </scene>
+        <!--Registration View Controller-->
+        <scene sceneID="uuu-Sz-0SH">
+            <objects>
+                <viewController storyboardIdentifier="RegistrationViewController" id="2xJ-I3-w84" customClass="RegistrationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c6U-oA-atx"/>
+                        <viewControllerLayoutGuide type="bottom" id="2qB-4M-cXc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WfQ-Rz-Qpb">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmx-Je-IRu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.49955253482972134" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="264" width="340" height="1"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0U-ln-gYy">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.49691611842105265" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="323" width="340" height="1"/>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Do-CV-TP0">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="379" width="340" height="1"/>
+                                </variation>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="oDn-gg-8uY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="226" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="a99-IT-sWO">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="285" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="R8x-T7-rR0">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="341" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1K-v2-W2T">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.10588235294117647" blue="0.32941176470588235" alpha="0.50200754643962853" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                <state key="normal" title="Create Profile">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.49769011222910214" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="503" width="165" height="37"/>
+                                </variation>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U5K-sf-7zI">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="70" y="226" width="276" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter an email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LYo-5h-1mg">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="70" y="285" width="200" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tBw-wL-0QV">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="70" y="341" width="212" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-2U-P4N">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="31"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.49897203947368424" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="20" width="157" height="40"/>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCl-Xw-2bo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.4995525348" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="440" width="340" height="1"/>
+                                </variation>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="DKX-vs-NLu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="32" y="402" width="30" height="30"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kEC-Yz-rAk">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="78" width="75" height="75"/>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TeA-0P-hWj">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="70" y="402" width="211" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4P-wc-ZHh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Select Profile Image">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.49784732972136225" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="167" width="121" height="34"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onSelectProfileImageButtonTapped:" destination="2xJ-I3-w84" eventType="touchUpInside" id="xsn-ls-dPp"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-19-bKH">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="78" width="75" height="75"/>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ehv-XU-qKX">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="162" y="78" width="75" height="75"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.4039215686" green="0.23137254900000001" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="pmx-Je-IRu"/>
+                                <exclude reference="v0U-ln-gYy"/>
+                                <exclude reference="8Do-CV-TP0"/>
+                                <exclude reference="oDn-gg-8uY"/>
+                                <exclude reference="a99-IT-sWO"/>
+                                <exclude reference="R8x-T7-rR0"/>
+                                <exclude reference="b1K-v2-W2T"/>
+                                <exclude reference="U5K-sf-7zI"/>
+                                <exclude reference="LYo-5h-1mg"/>
+                                <exclude reference="tBw-wL-0QV"/>
+                                <exclude reference="mSJ-2U-P4N"/>
+                                <exclude reference="UCl-Xw-2bo"/>
+                                <exclude reference="DKX-vs-NLu"/>
+                                <exclude reference="kEC-Yz-rAk"/>
+                                <exclude reference="TeA-0P-hWj"/>
+                                <exclude reference="i4P-wc-ZHh"/>
+                                <exclude reference="7zU-19-bKH"/>
+                                <exclude reference="Ehv-XU-qKX"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="pmx-Je-IRu"/>
+                                <include reference="v0U-ln-gYy"/>
+                                <include reference="8Do-CV-TP0"/>
+                                <include reference="oDn-gg-8uY"/>
+                                <include reference="a99-IT-sWO"/>
+                                <include reference="R8x-T7-rR0"/>
+                                <include reference="b1K-v2-W2T"/>
+                                <include reference="U5K-sf-7zI"/>
+                                <include reference="LYo-5h-1mg"/>
+                                <include reference="tBw-wL-0QV"/>
+                                <include reference="mSJ-2U-P4N"/>
+                                <include reference="UCl-Xw-2bo"/>
+                                <include reference="DKX-vs-NLu"/>
+                                <include reference="kEC-Yz-rAk"/>
+                                <include reference="TeA-0P-hWj"/>
+                                <include reference="i4P-wc-ZHh"/>
+                                <include reference="7zU-19-bKH"/>
+                                <include reference="Ehv-XU-qKX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="TeA-0P-hWj" id="acy-zw-dgl"/>
+                        <outlet property="enterEmailTextField" destination="LYo-5h-1mg" id="bAl-Vw-vCM"/>
+                        <outlet property="enterPasswordTextField" destination="tBw-wL-0QV" id="fki-7f-OXf"/>
+                        <outlet property="enterUsernameTextfield" destination="U5K-sf-7zI" id="ZhT-iW-Wqs"/>
+                        <outlet property="profileImage" destination="Ehv-XU-qKX" id="P2O-gp-1rB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bcc-tb-G2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916.5" y="285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name=" Dishnewlogin" width="480" height="201"/>
+        <image name="email" width="36" height="36"/>
+        <image name="lock" width="36" height="36"/>
+        <image name="username" width="36" height="36"/>
+    </resources>
 </document>
