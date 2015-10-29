@@ -9,7 +9,7 @@
 #import "FullScreenPhotoViewController.h"
 #import "Photo.h"
 
-@interface FullScreenPhotoViewController ()
+@interface FullScreenPhotoViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *postTimeLabel;
@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *dishDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *starImageViewCollection;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 
 @end
@@ -42,8 +43,37 @@
     
     [self displayDishRating];
     
+    self.mainImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(heartLikeAnimation:)];
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.delegate = self;
+    [self.mainImageView addGestureRecognizer:doubleTap];
     
 }
+
+- (void) heartLikeAnimation:(UIPinchGestureRecognizer *)sender {
+    
+    UIImageView *heart = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"whiteheart"]];
+    heart.hidden = NO;
+    CGFloat width = 60;
+    CGFloat height = 60;
+    heart.frame = CGRectMake(self.mainImageView.center.x - (width / 2), self.mainImageView.center.y + (height / 2), width, height);
+    heart.alpha = 0.5;
+    
+    [self.view addSubview:heart];
+    
+    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        CGFloat newWidth = width + 100;
+        CGFloat newHeight = height + 100;
+        heart.frame = CGRectMake(heart.center.x - (newWidth / 2), heart.center.y - (newHeight / 2), newWidth, newHeight);
+        heart.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        heart.hidden = YES;
+    }];
+    
+    
+}
+
 
 - (NSString *) getTimeAgoForPhoto {
     
@@ -66,6 +96,7 @@
     return timeForLabel;
 }
 
+
 - (void) displayDishRating {
     
     int rating = [self.viewingPhoto[@"photoRating_number"] intValue];
@@ -80,12 +111,28 @@
     
 }
 
+- (IBAction)onHeartButtonPressed:(UIButton *)sender {
+    
+    self.likeButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForScaling:[UIImage imageNamed:@"pinkheartfull"] scaledToSize:CGSizeMake(self.likeButton.frame.size.width, self.likeButton.frame.size.height)]];
+    
+    
+}
 
 
 - (IBAction)onBackButtonPressed:(UIButton *)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (UIImage *)imageForScaling:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    return newImage;
 }
 
 
