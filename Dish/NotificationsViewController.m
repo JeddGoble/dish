@@ -120,6 +120,38 @@
             return cell;
             
         }
+        
+        if ([notification objectForKey:@"notificationType_string"] == [NSString stringWithFormat:@"comment"]) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            
+            PFFile *photoFile = [[notification objectForKey:@"Photo_pointer"] objectForKey:@"photo_data"];
+            [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    UIImageView *photo = [[UIImageView alloc] init];
+                    photo.frame = CGRectMake(2, 2, 46, 46);
+                    photo.image = image;
+                    [cell addSubview:photo];
+                }
+            }];
+            
+            UILabel *textLabel = [[UILabel alloc] init];
+            textLabel.frame = CGRectMake(55, 5, self.view.frame.size.width - 55, 20);
+            textLabel.text = [NSString stringWithFormat:@"%@ commented on your photo.", [[notification objectForKey:@"sourceUser_pointer"] objectForKey:@"username"]];
+            [cell addSubview:textLabel];
+            
+            UILabel *date = [[UILabel alloc] init];
+            date.frame = CGRectMake(55, 25, self.view.frame.size.width - 55, 20);
+            date.text = [NSString stringWithFormat:@"%@", [self.formatter stringFromDate:notification.createdAt]];
+            date.font = [UIFont systemFontOfSize:11];
+            date.textColor = [UIColor grayColor];
+            [cell addSubview:date];
+            
+            return cell;
+            
+        }
+        
     }
     return cell;
 }
