@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *starImageViewCollection;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (nonatomic) BOOL photoLiked;
 
 
 @end
@@ -49,9 +50,33 @@
     doubleTap.delegate = self;
     [self.mainImageView addGestureRecognizer:doubleTap];
     
+    self.photoLiked = NO;
+    
 }
 
-- (void) heartLikeAnimation:(UIPinchGestureRecognizer *)sender {
+
+- (IBAction)onHeartButtonPressed:(UIButton *)sender {
+    
+}
+
+
+- (void) likedOrDislike:(UITapGestureRecognizer *)sender {
+    self.photoLiked = !self.photoLiked;
+    
+    if (self.photoLiked) {
+        [self heartLikeAnimation:sender];
+        self.likeButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForScaling:[UIImage imageNamed:@"pinkheartfull"] scaledToSize:CGSizeMake(self.likeButton.frame.size.width, self.likeButton.frame.size.height)]];
+    } else {
+        self.likeButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForScaling:[UIImage imageNamed:@"pinkheart"] scaledToSize:CGSizeMake(self.likeButton.frame.size.width, self.likeButton.frame.size.height)]];
+    }
+    
+    
+}
+
+
+- (void) heartLikeAnimation:(UITapGestureRecognizer *)sender {
+    
+    
     
     UIImageView *heart = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"whiteheart"]];
     heart.hidden = NO;
@@ -111,12 +136,7 @@
     
 }
 
-- (IBAction)onHeartButtonPressed:(UIButton *)sender {
-    
-    self.likeButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForScaling:[UIImage imageNamed:@"pinkheartfull"] scaledToSize:CGSizeMake(self.likeButton.frame.size.width, self.likeButton.frame.size.height)]];
-    
-    
-}
+
 
 
 - (IBAction)onBackButtonPressed:(UIButton *)sender {

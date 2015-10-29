@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segController;
 @property (weak, nonatomic) IBOutlet UIScrollView *traitsView;
 @property (weak, nonatomic) IBOutlet UIButton *mapRefreshButton;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (weak, nonatomic) IBOutlet UIButton *editSettingsButton;
 
 @property (strong, nonatomic) NSArray *userLikes;
 @property (strong, nonatomic) NSArray *userDislikes;
@@ -36,7 +38,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 
-@property (strong, nonatomic) PFUser *viewingUser;
+
 @property (strong, nonatomic) NSMutableArray *photoObjects;
 @property (strong, nonatomic) NSMutableArray *downloadedImages;
 
@@ -87,6 +89,15 @@
     
     self.locationTextLabel.alpha = 0.6;
     
+    if (self.viewingUser == [PFUser currentUser]) {
+        self.followButton.hidden = YES;
+        self.editSettingsButton.hidden = NO;
+    } else {
+        self.followButton.hidden = NO;
+        self.editSettingsButton.hidden = YES;
+    }
+    
+    
     self.photoObjects = [[NSMutableArray alloc] init];
     self.downloadedImages = [[NSMutableArray alloc] init];
     
@@ -96,7 +107,6 @@
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
     [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         self.viewingUser = user;
-        
         
         self.usernameTextLabel.text = self.viewingUser.username;
         self.userLikes = [[NSArray alloc] initWithArray:user[@"likes_array"]];
@@ -344,6 +354,10 @@
     
 }
 
+- (IBAction)onFollowButtonTapped:(UIButton *)sender {
+}
+
+
 
 
 #pragma MapView Handling
@@ -438,8 +452,6 @@
         
         SettingsViewController *tempVC = segue.destinationViewController;
         tempVC.currentUser = self.viewingUser;
-        
-        tempVC.profileImage = self.profilePhotoImageView.image;
         
         
     } else if ([segue.identifier isEqualToString:@"fullScreenPhotoSegue"]) {

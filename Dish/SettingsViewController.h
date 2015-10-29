@@ -14,6 +14,5 @@
 @interface SettingsViewController : UITableViewController
 
 @property (strong, nonatomic) PFUser *currentUser;
-@property (strong, nonatomic) UIImage *profileImage;
 
 @end
