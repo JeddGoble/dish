@@ -7,8 +7,12 @@
 //
 
 #import "NotificationsViewController.h"
+#import <Parse/Parse.h>
 
-@interface NotificationsViewController ()
+@interface NotificationsViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) PFUser *currentUser;
+@property (strong, nonatomic) NSArray *arrayOfNotifications;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,21 +21,57 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
+    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+        self.currentUser = user;
+    
+        PFQuery *notificationsQuery = [PFQuery queryWithClassName:@"Notification"];
+//        [notificationsQuery whereKey:@"targetUser_pointer" equalTo:self.currentUser];
+        [notificationsQuery includeKey:@"sourceUser_pointer"];
+        [notificationsQuery includeKey:@"Photo_pointer"];
+            [notificationsQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+               
+                self.arrayOfNotifications = objects;
+                [self.tableView reloadData];
+            }];
+    
+    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfNotifications.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *notification = [self.arrayOfNotifications objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell = nil;
+    if (cell == nil) {
+        
+        if ([notification objectForKey:@"notificationType_string"] == [NSString stringWithFormat:@"like"]) {
+            
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ liked your photo.", [[notification objectForKey:@"sourceUser_pointer"] objectForKey:@"username"]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", notification.createdAt];
+    
+    return cell;
+            
+        }
+        
+        if ([notification objectForKey:@"notification_type"] == [NSString stringWithFormat:@"like"]) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ began following you.", [[notification objectForKey:@"sourceUser_pointer"] objectForKey:@"username"]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", notification.createdAt];
+            
+            return cell;
+        }
+        
+    }
+    return cell;
 }
-*/
+
+
 
 @end

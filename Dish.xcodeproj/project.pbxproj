@@ -272,13 +272,12 @@
 		04A86A131BD9A20B00D7C883 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ACD0698C1BE289FA00D6EAA1 /* Notification */,
 				AC7E75851BE01AEC009251A6 /* Feed */,
 				04BEEF1A1BDFBFF5008A5A7D /* Profile */,
 				ACFD77661BDDC3F900511AD3 /* Photo */,
 				04A86A031BD99E6300D7C883 /* TrendingViewController.h */,
 				04A86A041BD99E6300D7C883 /* TrendingViewController.m */,
-				04A86A0C1BD99F9700D7C883 /* NotificationsViewController.h */,
-				04A86A0D1BD99F9700D7C883 /* NotificationsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -345,6 +344,15 @@
 				04A869FE1BD99DC900D7C883 /* FeedViewController.m */,
 			);
 			name = Feed;
+			sourceTree = "<group>";
+		};
+		ACD0698C1BE289FA00D6EAA1 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				04A86A0C1BD99F9700D7C883 /* NotificationsViewController.h */,
+				04A86A0D1BD99F9700D7C883 /* NotificationsViewController.m */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		ACFD77661BDDC3F900511AD3 /* Photo */ = {
