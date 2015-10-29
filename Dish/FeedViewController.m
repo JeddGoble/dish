@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import <Parse/Parse.h>
+#import "CommentsViewController.h"
 
 @interface FeedViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) PFUser *currentUser;
@@ -158,8 +159,23 @@
     return self.arrayOfPhotos.count;
 }
 
+- (void)commentTapped:(UIGestureRecognizer *)gestureRecognizer {
+    PFObject *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer.view].section];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    CommentsViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"Comments"];
+    dvc.viewingPhoto = photo;
+    [self presentViewController:dvc animated:YES completion:nil];
+    
+}
+
 - (void)doubleTapped:(UIGestureRecognizer *)gestureRecognizer{
     PFObject *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer.view].section];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    CommentsViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"Comments"];
+    dvc.viewingPhoto = photo;
+    [self presentViewController:dvc animated:YES completion:nil];
     
     if (![[photo objectForKey:@"usersThatLiked_array"] containsObject:self.currentUser]) {
     [photo addObject:self.currentUser forKey:@"usersThatLiked_array"];
