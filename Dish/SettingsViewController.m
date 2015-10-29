@@ -41,9 +41,19 @@
     self.biographyTextView.text = self.currentUser[@"bio_string"];
     self.locationTextField.text = self.currentUser[@"hometown_string"];
     
-    self.profileImageView.image = self.profileImage;
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2;
     self.profileImageView.clipsToBounds = YES;
+
+    
+    PFFile *profilePicture = self.currentUser[@"userProfileImage_data"];
+    [profilePicture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        UIImage *profileImage = [UIImage imageWithData:data];
+        self.profileImageView.image = profileImage;
+        
+        
+        [self.tableView reloadData];
+    }];
+    
     
 }
 
@@ -137,13 +147,34 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.profileImage = chosenImage;
     self.profileImageView.image = chosenImage;
     
 }
 
 - (IBAction)onChangePasswordButtonTapped:(UIButton *)sender {
 }
+
+- (IBAction)onLogOutButtonTapped:(UIButton *)sender {
+    [PFUser logOut];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+    UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+    [self.navigationController pushViewController:tempVC animated:YES];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
