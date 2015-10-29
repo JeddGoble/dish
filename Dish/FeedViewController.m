@@ -60,7 +60,6 @@
                     if (!error) {
                         for (PFObject *object in objects) {
                             [self.arrayOfPhotos addObject:object];
-                            
                         }
                         [self.tableView reloadData];
                     }
@@ -157,10 +156,26 @@
     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"The object has been saved");
+            [self.tableView reloadData];
         } else {
             NSLog(@"There was a problem, check error.description");
         }
     }];
+
+        PFObject *notification = [PFObject objectWithClassName:@"Notification"];
+        [notification setObject:self.currentUser forKey:@"sourceUser_pointer"];
+        [notification setObject:[photo objectForKey:@"User_pointer"] forKey:@"targetUser_pointer"];
+        [notification setObject:photo forKey:@"Photo_pointer"];
+        [notification setObject:@"like" forKey:@"notificationType_string"];
+        [notification saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"The object has been saved");
+            } else {
+                NSLog(@"There was a problem with notification");
+            }
+        }];
+
+    
     }
 
     
@@ -269,6 +284,21 @@
             numberOfLikes.text = [NSString stringWithFormat:@"%lu likes", [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"usersThatLiked_array"] count]];
             numberOfLikes.textColor = [UIColor purpleColor];
             [cell addSubview:numberOfLikes];
+            
+            UIImageView *like = [[UIImageView alloc] init];
+            like.frame = CGRectMake(self.view.frame.size.width - 27, 40, 20, 20);
+            if ([[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"usersThatLiked_array"] containsObject:self.currentUser]) {
+                like.image = [UIImage imageNamed:@"pinkheartfull"];
+            } else {
+                like.image = [UIImage imageNamed:@"pinkheart"];
+            }
+            [cell addSubview:like];
+            
+            UIButton *commentButton = [[UIButton alloc] init];
+            commentButton.frame = CGRectMake(self.view.frame.size.width - 52, 40, 20, 20);
+            [commentButton setBackgroundImage:[UIImage imageNamed:@"comments"] forState:UIControlStateNormal];
+            [cell addSubview:commentButton];
+            
             
             
             
