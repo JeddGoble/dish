@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFUser *userForFilter;
 @property NSDate *currentDate;
+@property NSInteger photosDisplayed;
+@property BOOL endOfPhotos;
 
 @end
 
@@ -24,7 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.endOfPhotos = NO;
     self.currentDate = [NSDate date];
+    self.photosDisplayed = 10;
     
     if (self.arrayOfUsersFollowing == nil) {
         self.arrayOfUsersFollowing = [[NSMutableArray alloc] init];
@@ -54,6 +58,9 @@
                 }
                 
                 PFQuery *photoQuery = [PFQuery queryWithClassName:@"Photo"];
+                photoQuery.limit = 10;
+                photoQuery.skip = self.photosDisplayed - 10;
+                [photoQuery orderByDescending:@"createdAt"];
                 [photoQuery includeKey:@"User_pointer"];
                 [photoQuery whereKey:@"User_pointer" containedIn:self.arrayOfUsersFollowing];
                 [photoQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -62,6 +69,9 @@
                             [self.arrayOfPhotos addObject:object];
                         }
                         [self.tableView reloadData];
+                        if (self.arrayOfPhotos.count < self.photosDisplayed) {
+                            self.endOfPhotos = YES;
+                        }
                     }
                 }];
             } else {
@@ -323,6 +333,27 @@
     
     return nil;
 }
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.endOfPhotos) {
+
+    NSInteger lastSectionIndex = [tableView numberOfSections] - 1;
+    if (indexPath.section == lastSectionIndex && indexPath.row == 0) {
+        // This is the last cell
+        self.photosDisplayed = [tableView numberOfSections] + 10;
+        [self queryNewPhotos];
+        
+    }
+    }
+}
+
+
+
+
+
+
 
 
 @end
