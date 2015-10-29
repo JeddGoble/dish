@@ -606,35 +606,35 @@
                                                     <constraint firstAttribute="height" constant="21" id="jQa-kJ-NQU"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFilled" translatesAutoresizingMaskIntoConstraints="NO" id="0ef-cJ-VQc">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="0ef-cJ-VQc">
                                                 <rect key="frame" x="8" y="392" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="kwW-sa-lPQ"/>
                                                     <constraint firstAttribute="height" constant="21" id="wh5-VI-4EL"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFilled" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-g1-kgH">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-g1-kgH">
                                                 <rect key="frame" x="33" y="392" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="3v5-hx-XgE"/>
                                                     <constraint firstAttribute="height" constant="21" id="MLG-R2-xhQ"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFilled" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-iR-TGX">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-iR-TGX">
                                                 <rect key="frame" x="58" y="392" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="IMG-Jn-5j3"/>
                                                     <constraint firstAttribute="height" constant="21" id="JwE-Ky-OHs"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFilled" translatesAutoresizingMaskIntoConstraints="NO" id="sMh-UZ-s7K">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="sMh-UZ-s7K">
                                                 <rect key="frame" x="83" y="392" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="7qh-bG-OrL"/>
                                                     <constraint firstAttribute="height" constant="21" id="FYz-T8-25z"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starFilled" translatesAutoresizingMaskIntoConstraints="NO" id="n8Y-M4-fcT">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="n8Y-M4-fcT">
                                                 <rect key="frame" x="108" y="392" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="IOW-e2-oqV"/>
@@ -784,6 +784,11 @@
                         <outlet property="postTimeLabel" destination="VGq-ZZ-F95" id="Cpo-k5-C3e"/>
                         <outlet property="userName" destination="Gte-A6-uHH" id="nXi-cE-bvM"/>
                         <outlet property="userPhoto" destination="W0Y-6a-xow" id="aji-0Q-KKE"/>
+                        <outletCollection property="starImageViewCollection" destination="0ef-cJ-VQc" id="bUg-ON-m7a"/>
+                        <outletCollection property="starImageViewCollection" destination="TZL-g1-kgH" id="5G8-fu-9dZ"/>
+                        <outletCollection property="starImageViewCollection" destination="Ssz-iR-TGX" id="xFH-Bn-ZMV"/>
+                        <outletCollection property="starImageViewCollection" destination="sMh-UZ-s7K" id="mUF-GN-K2q"/>
+                        <outletCollection property="starImageViewCollection" destination="n8Y-M4-fcT" id="CQ1-Yr-YaE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0DE-KI-bhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -902,7 +907,7 @@
         <image name="purpleblock" width="1242" height="1242"/>
         <image name="purpleblocklensflare" width="1242" height="1242"/>
         <image name="refresh" width="24" height="24"/>
-        <image name="starFilled" width="75" height="75"/>
+        <image name="starEmpty" width="75" height="75"/>
         <image name="steak" width="620" height="620"/>
     </resources>
 </document>

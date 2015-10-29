@@ -354,8 +354,8 @@
         
         double span;
         
-        if (self.mapView.region.span.longitudeDelta > 0.5) {
-            span = 0.01;
+        if (self.mapView.region.span.longitudeDelta > 10.0) {
+            span = 1.0;
         } else {
             span = self.mapView.region.span.longitudeDelta;
         }

@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dishNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *dishDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *starImageViewCollection;
+
 
 @end
 
@@ -37,6 +39,8 @@
     self.dishNameLabel.text = self.viewingPhoto.photoTitle_string;
     self.dishDescriptionLabel.text = self.viewingPhoto.photoDesc_string;
     self.likesLabel.text = [NSString stringWithFormat:@"%lu likes", (unsigned long)self.viewingPhoto.usersThatLiked_Array.count];
+    
+    [self displayDishRating];
     
     
 }
@@ -60,6 +64,20 @@
     }
     
     return timeForLabel;
+}
+
+- (void) displayDishRating {
+    
+    int rating = [self.viewingPhoto[@"photoRating_number"] intValue];
+    int i = 1;
+    
+    for (UIImageView *star in self.starImageViewCollection) {
+        if (i <= rating) {
+            star.image = [UIImage imageNamed:@"starFilled"];
+        }
+        i++;
+    }
+    
 }
 
 

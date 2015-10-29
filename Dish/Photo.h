@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
 @property (strong, nonatomic) NSArray *usersThatLiked_Array;
+@property (strong, nonatomic) NSNumber *photoRating_Number;
 
 
 + (NSString *) parseClassName;

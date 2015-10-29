@@ -18,6 +18,7 @@
 @dynamic createdAt;
 @dynamic updatedAt;
 @dynamic usersThatLiked_Array;
+@dynamic photoRating_Number;
 
 + (void) load {
     [self registerSubclass];
