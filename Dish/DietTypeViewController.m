@@ -7,6 +7,7 @@
 //
 
 #import "DietTypeViewController.h"
+#import "FeedViewController.h"
 
 @interface DietTypeViewController () < UITableViewDelegate , UITableViewDataSource >
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -93,6 +94,10 @@
             NSLog(@"There was a problem, check error.description");
         }
     }];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+    FeedViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"NewsFeed"];
+    [self presentViewController:dvc animated:YES completion:nil];
     
 }
 

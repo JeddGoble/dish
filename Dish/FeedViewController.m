@@ -172,11 +172,6 @@
 - (void)doubleTapped:(UIGestureRecognizer *)gestureRecognizer{
     PFObject *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer.view].section];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
-    CommentsViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"Comments"];
-    dvc.viewingPhoto = photo;
-    [self presentViewController:dvc animated:YES completion:nil];
-    
     if (![[photo objectForKey:@"usersThatLiked_array"] containsObject:self.currentUser]) {
     [photo addObject:self.currentUser forKey:@"usersThatLiked_array"];
     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -242,6 +237,9 @@
         cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             UILabel *dishName = [[UILabel alloc] init];
             dishName.frame = CGRectMake(10, 10, 150, 20);
             dishName.text = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoTitle_string"];
@@ -324,6 +322,12 @@
             commentButton.frame = CGRectMake(self.view.frame.size.width - 52, 40, 20, 20);
             [commentButton setBackgroundImage:[UIImage imageNamed:@"comments"] forState:UIControlStateNormal];
             [cell addSubview:commentButton];
+            
+            UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] init];
+            [gestureRecognizer addTarget:self action:@selector(commentTapped:)];
+            
+            gestureRecognizer.numberOfTapsRequired = 1;
+            [commentButton addGestureRecognizer:gestureRecognizer];
             
             
             
