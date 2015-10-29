@@ -60,6 +60,7 @@
                     if (!error) {
                         for (PFObject *object in objects) {
                             [self.arrayOfPhotos addObject:object];
+                            
                         }
                         [self.tableView reloadData];
                     }
@@ -148,24 +149,48 @@
     return self.arrayOfPhotos.count;
 }
 
+- (void)doubleTapped:(UIGestureRecognizer *)gestureRecognizer{
+    PFObject *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer.view].section];
+    
+    if (![[photo objectForKey:@"usersThatLiked_array"] containsObject:self.currentUser]) {
+    [photo addObject:self.currentUser forKey:@"usersThatLiked_array"];
+    [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"The object has been saved");
+        } else {
+            NSLog(@"There was a problem, check error.description");
+        }
+    }];
+    }
+
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell"];
         cell = nil;
         if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"photoCell"];
-        cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-        PFFile *photoFile = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photo_data"];
-        [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            if (!error) {
-                UIImage *image = [UIImage imageWithData:data];
-                UIImageView *photoImage = [[UIImageView alloc] initWithImage:image];
-                photoImage.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-                [cell addSubview:photoImage];
-            }
-        }];
-        return cell;
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"photoCell"];
+            
+            UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] init];
+            [gestureRecognizer addTarget:self action:@selector(doubleTapped:)];
+            
+            gestureRecognizer.numberOfTapsRequired = 2;
+            [cell addGestureRecognizer:gestureRecognizer];
+            
+            cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+            PFFile *photoFile = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photo_data"];
+            [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    UIImageView *photoImage = [[UIImageView alloc] initWithImage:image];
+                    photoImage.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+                    [cell addSubview:photoImage];
+                }
+            }];
+            return cell;
         } else {
             return cell;
         }
@@ -175,73 +200,73 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
         cell = nil;
         if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
-        UILabel *dishName = [[UILabel alloc] init];
-        dishName.frame = CGRectMake(10, 10, 150, 20);
-        dishName.text = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoTitle_string"];
-        dishName.textColor = [UIColor purpleColor];
-        [cell addSubview:dishName];
-        
-        UIImageView *starOne = [[UIImageView alloc] init];
-        UIImageView *starTwo = [[UIImageView alloc] init];
-        UIImageView *starThree = [[UIImageView alloc] init];
-        UIImageView *starFour = [[UIImageView alloc] init];
-        UIImageView *starFive = [[UIImageView alloc] init];
-        
-        starOne.frame = CGRectMake(7, 40, 20, 20);
-        starTwo.frame = CGRectMake(27, 40, 20, 20);
-        starThree.frame = CGRectMake(47, 40, 20, 20);
-        starFour.frame = CGRectMake(67, 40, 20, 20);
-        starFive.frame = CGRectMake(87, 40, 20, 20);
-        
-        [cell addSubview:starOne];
-        [cell addSubview:starTwo];
-        [cell addSubview:starThree];
-        [cell addSubview:starFour];
-        [cell addSubview:starFive];
-        
-        int rating = [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoRating_number"] intValue];
-        switch (rating) {
-            case 5: starFive.image = [UIImage imageNamed:@"starFilled"];
-                starFour.image = [UIImage imageNamed:@"starFilled"];
-                starThree.image = [UIImage imageNamed:@"starFilled"];
-                starTwo.image = [UIImage imageNamed:@"starFilled"];
-                starOne.image = [UIImage imageNamed:@"starFilled"];
-                break;
-                
-            case 4: starFive.image = [UIImage imageNamed:@"starEmpty"];
-                starFour.image = [UIImage imageNamed:@"starFilled"];
-                starThree.image = [UIImage imageNamed:@"starFilled"];
-                starTwo.image = [UIImage imageNamed:@"starFilled"];
-                starOne.image = [UIImage imageNamed:@"starFilled"];
-                break;
-                
-            case 3: starFive.image = [UIImage imageNamed:@"starEmpty"];
-                starFour.image = [UIImage imageNamed:@"starEmpty"];
-                starThree.image = [UIImage imageNamed:@"starFilled"];
-                starTwo.image = [UIImage imageNamed:@"starFilled"];
-                starOne.image = [UIImage imageNamed:@"starFilled"];
-                break;
-                
-            case 2: starFive.image = [UIImage imageNamed:@"starEmpty"];
-                starFour.image = [UIImage imageNamed:@"starEmpty"];
-                starThree.image = [UIImage imageNamed:@"starEmpty"];
-                starTwo.image = [UIImage imageNamed:@"starFilled"];
-                starOne.image = [UIImage imageNamed:@"starFilled"];
-                break;
-                
-            case 1: starFive.image = [UIImage imageNamed:@"starEmpty"];
-                starFour.image = [UIImage imageNamed:@"starEmpty"];
-                starThree.image = [UIImage imageNamed:@"starEmpty"];
-                starTwo.image = [UIImage imageNamed:@"starEmpty"];
-                starOne.image = [UIImage imageNamed:@"starFilled"];
-                break;
-                
-        }
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+            UILabel *dishName = [[UILabel alloc] init];
+            dishName.frame = CGRectMake(10, 10, 150, 20);
+            dishName.text = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoTitle_string"];
+            dishName.textColor = [UIColor purpleColor];
+            [cell addSubview:dishName];
+            
+            UIImageView *starOne = [[UIImageView alloc] init];
+            UIImageView *starTwo = [[UIImageView alloc] init];
+            UIImageView *starThree = [[UIImageView alloc] init];
+            UIImageView *starFour = [[UIImageView alloc] init];
+            UIImageView *starFive = [[UIImageView alloc] init];
+            
+            starOne.frame = CGRectMake(7, 40, 20, 20);
+            starTwo.frame = CGRectMake(27, 40, 20, 20);
+            starThree.frame = CGRectMake(47, 40, 20, 20);
+            starFour.frame = CGRectMake(67, 40, 20, 20);
+            starFive.frame = CGRectMake(87, 40, 20, 20);
+            
+            [cell addSubview:starOne];
+            [cell addSubview:starTwo];
+            [cell addSubview:starThree];
+            [cell addSubview:starFour];
+            [cell addSubview:starFive];
+            
+            int rating = [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoRating_number"] intValue];
+            switch (rating) {
+                case 5: starFive.image = [UIImage imageNamed:@"starFilled"];
+                    starFour.image = [UIImage imageNamed:@"starFilled"];
+                    starThree.image = [UIImage imageNamed:@"starFilled"];
+                    starTwo.image = [UIImage imageNamed:@"starFilled"];
+                    starOne.image = [UIImage imageNamed:@"starFilled"];
+                    break;
+                    
+                case 4: starFive.image = [UIImage imageNamed:@"starEmpty"];
+                    starFour.image = [UIImage imageNamed:@"starFilled"];
+                    starThree.image = [UIImage imageNamed:@"starFilled"];
+                    starTwo.image = [UIImage imageNamed:@"starFilled"];
+                    starOne.image = [UIImage imageNamed:@"starFilled"];
+                    break;
+                    
+                case 3: starFive.image = [UIImage imageNamed:@"starEmpty"];
+                    starFour.image = [UIImage imageNamed:@"starEmpty"];
+                    starThree.image = [UIImage imageNamed:@"starFilled"];
+                    starTwo.image = [UIImage imageNamed:@"starFilled"];
+                    starOne.image = [UIImage imageNamed:@"starFilled"];
+                    break;
+                    
+                case 2: starFive.image = [UIImage imageNamed:@"starEmpty"];
+                    starFour.image = [UIImage imageNamed:@"starEmpty"];
+                    starThree.image = [UIImage imageNamed:@"starEmpty"];
+                    starTwo.image = [UIImage imageNamed:@"starFilled"];
+                    starOne.image = [UIImage imageNamed:@"starFilled"];
+                    break;
+                    
+                case 1: starFive.image = [UIImage imageNamed:@"starEmpty"];
+                    starFour.image = [UIImage imageNamed:@"starEmpty"];
+                    starThree.image = [UIImage imageNamed:@"starEmpty"];
+                    starTwo.image = [UIImage imageNamed:@"starEmpty"];
+                    starOne.image = [UIImage imageNamed:@"starFilled"];
+                    break;
+                    
+            }
             
             UILabel *numberOfLikes = [[UILabel alloc] init];
             numberOfLikes.frame = CGRectMake(115, 41, 150, 20);
-            numberOfLikes.text = [NSString stringWithFormat:@"%i likes", [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"numberOfLikes_number"] intValue]];
+            numberOfLikes.text = [NSString stringWithFormat:@"%lu likes", [[[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"usersThatLiked_array"] count]];
             numberOfLikes.textColor = [UIColor purpleColor];
             [cell addSubview:numberOfLikes];
             
@@ -259,8 +284,8 @@
             
             [cell layoutSubviews];
             
-        
-        return cell;
+            
+            return cell;
         } else {
             return cell;
         }
