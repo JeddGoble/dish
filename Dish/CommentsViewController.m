@@ -8,9 +8,11 @@
 
 #import "CommentsViewController.h"
 #import "Photo.h"
+#import <Parse/Parse.h>
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *comments;
 
 @end
 
@@ -22,6 +24,20 @@
     self.tableView.estimatedRowHeight = 60.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    self.comments = [NSMutableArray new];
+    
+    PFQuery *getComments = [PFQuery queryWithClassName:@"Comment"];
+    [getComments whereKey:@"Photo_pointer" equalTo:self.viewingPhoto];
+    [getComments findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [self.comments addObject:self.viewingPhoto.photoDesc_string];
+        
+        for (PFObject *comment in objects) {
+            [self.comments addObject:comment[@"comment_string"]];
+            
+        }
+        
+        [self.tableView reloadData];
+    }];
     
 }
 
@@ -29,7 +45,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCellID"];
     
-    
+    cell.textLabel.text = [self.comments objectAtIndex:indexPath.row];
     
     return cell;
     

@@ -8,6 +8,7 @@
 
 #import "FullScreenPhotoViewController.h"
 #import "Photo.h"
+#import "CommentsViewController.h"
 
 @interface FullScreenPhotoViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
@@ -136,6 +137,15 @@
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier  isEqual: @"CommentsID"]) {
+        CommentsViewController *tempVC = segue.destinationViewController;
+        tempVC.viewingPhoto = self.viewingPhoto;
+    }
+
+    
+}
 
 
 

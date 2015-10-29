@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Photo;
 
 @interface CommentsViewController : UIViewController
 
-@property (strong, nonatomic) NSMutableArray *comments;
+@property (strong, nonatomic) Photo *viewingPhoto;
 
 @end

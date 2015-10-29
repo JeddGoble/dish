@@ -717,7 +717,7 @@
                                                 </constraints>
                                                 <state key="normal" image="comments"/>
                                                 <connections>
-                                                    <segue destination="9gf-x2-kyd" kind="push" id="egB-gh-FBQ"/>
+                                                    <segue destination="9gf-x2-kyd" kind="push" identifier="CommentsID" id="egB-gh-FBQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxY-df-tlP">
