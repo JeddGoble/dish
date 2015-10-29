@@ -261,6 +261,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="121" y="503" width="165" height="37"/>
                                 </variation>
+                                <connections>
+                                    <action selector="onCreateProfileButtonTapped:" destination="2xJ-I3-w84" eventType="touchUpInside" id="BVg-xp-Kq9"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U5K-sf-7zI">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>

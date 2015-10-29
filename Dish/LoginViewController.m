@@ -21,22 +21,33 @@
 }
 
 
--(BOOL) checkCurrentUser {
-    PFUser *currentUser = [PFUser]
-    if (currentUser) {
-        //call delegate method to pass userobject
-    } else {
-        
-    };
+//-(BOOL) checkCurrentUser {
+//    PFUser *currentUser = [PFUser]
+//    if (currentUser) {
+//        //call delegate method to pass userobject
+//    } else {
+//        
+//    };
+//}
+
+-(void)userlogin {
+    
+    NSString *username = self.usernameTextField.text;
+    NSString *password = self.passwordTextField.text;
+
+    if (username.length <= 0 || password.length <= 0) {
+         
+    }
+    
+[PFUser logInWithUsernameInBackground:username password:password
+                                block:^(PFUser *user, NSError *error) {
+                                    if (user) {
+                                        NSLog(@"Successful Login");
+                                    } else {
+                                        NSLog(@"Successful Login");
+                                    }
+                                }];
 }
-//[PFUser logInWithUsernameInBackground:@"myname" password:@"mypass"
-//                                block:^(PFUser *user, NSError *error) {
-//                                    if (user) {
-//                                        // Do stuff after successful login.
-//                                    } else {
-//                                        // The login failed. Check error to see why.
-//                                    }
-//                                }];
 
 // sign up
 //- (void)myMethod {
