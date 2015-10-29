@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Photo;
+@class PFUser;
+
 @interface FullScreenPhotoViewController : UIViewController
+
+@property (strong, nonatomic) PFUser *viewingUser;
+@property (strong, nonatomic) UIImage *viewingUserPic;
+@property (strong, nonatomic) Photo *viewingPhoto;
+@property (strong, nonatomic) UIImage *imageToDisplay;
 
 @end

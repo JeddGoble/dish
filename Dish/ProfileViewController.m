@@ -36,9 +36,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 
-@property (strong, nonatomic) PFUser *currentUser;
+@property (strong, nonatomic) PFUser *viewingUser;
 @property (strong, nonatomic) NSMutableArray *photoObjects;
-@property (strong, nonatomic) NSMutableArray *imagesForGrid;
+@property (strong, nonatomic) NSMutableArray *downloadedImages;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
@@ -52,16 +52,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    Photo *testPhoto = [Photo new];
-//    testPhoto.photoDesc_string = @"Testing photo subclass";
-//    [testPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//        NSLog(@"Successfully saved testPhoto\n");
-//        NSLog(@"%@", testPhoto.photoDesc_string);
-//    }];
+
     
     
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
-    
+    [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
     
     self.mapView.hidden = YES;
     self.traitsView.hidden = YES;
@@ -76,7 +70,7 @@
     self.locationManager = [CLLocationManager new];
     
     [self initiatePageWithFeed];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -94,21 +88,22 @@
     self.locationTextLabel.alpha = 0.6;
     
     self.photoObjects = [[NSMutableArray alloc] init];
-    self.imagesForGrid = [[NSMutableArray alloc] init];
+    self.downloadedImages = [[NSMutableArray alloc] init];
     
     self.profilePhotoImageView.layer.cornerRadius = self.profilePhotoImageView.frame.size.height / 2;
     self.profilePhotoImageView.clipsToBounds = YES;
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
     [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
-        self.currentUser = user;
+        self.viewingUser = user;
         
         
-        self.usernameTextLabel.text = self.currentUser.username;
+        self.usernameTextLabel.text = self.viewingUser.username;
         self.userLikes = [[NSArray alloc] initWithArray:user[@"likes_array"]];
         self.userDislikes = [[NSArray alloc] initWithArray:user[@"dislikes_array"]];
         self.locationTextLabel.text = user[@"hometown_string"];
         self.biographyTextView.text = user[@"bio_string"];
+        self.biographyTextView.font = [UIFont systemFontOfSize:14.0];
         self.biographyTextView.textColor = [UIColor whiteColor];
         self.followersCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followerCount_number"]];
         self.followingCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followingCount_number"]];
@@ -119,16 +114,17 @@
             self.profilePhotoImageView.image = profileImage;
         }];
         
-        [self getSixUserPhotos:self.currentUser withCompletion:^(NSArray *photos) {
-            for (PFObject *photo in photos) {
+        [self getSixUserPhotos:self.viewingUser withCompletion:^(NSArray *photos) {
+            
+            for (Photo *photo in photos) {
                 
-                [self.photoObjects addObject:photo];
-                
-                PFFile *photoFile = photo[@"photo_data"];
-                [photoFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                    UIImage *image = [UIImage imageWithData:data];
+                [photo.photo_data getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
                     
-                    [self.imagesForGrid addObject:image];
+                    UIImage *image = [UIImage imageWithData:data];
+                    [self.downloadedImages addObject:image];
+    
+                    [self.photoObjects addObject:photo];
+                    
                     [self.collectionView reloadData];
                 }];
                 
@@ -141,10 +137,10 @@
     }];
 }
 
-- (void) getSixUserPhotos:(PFUser *)currentUser withCompletion:(void (^)(NSArray *photos))complete {
+- (void) getSixUserPhotos:(PFUser *)viewingUser withCompletion:(void (^)(NSArray *photos))complete {
     
-    PFQuery *photoIDQuery = [PFQuery queryWithClassName:@"Photo"];
-    [photoIDQuery whereKey:@"User_pointer" equalTo:currentUser];
+    PFQuery *photoIDQuery = [Photo query];
+    [photoIDQuery whereKey:@"User_pointer" equalTo:viewingUser];
     [photoIDQuery setLimit:6];
     [photoIDQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
@@ -190,7 +186,9 @@
     CGFloat width = (self.view.frame.size.width / 2) - 15;
     CGFloat height = width;
     
-    UIImage *resizedImage = [self imageForScaling:[self.imagesForGrid objectAtIndex:indexPath.item] scaledToSize:CGSizeMake(width, height)];
+    UIImage *image = [self.downloadedImages objectAtIndex:indexPath.item];
+    
+    UIImage *resizedImage = [self imageForScaling:image scaledToSize:CGSizeMake(width, height)];
     
     cell.backgroundColor = [UIColor colorWithPatternImage:resizedImage];
     
@@ -201,7 +199,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     
-    return self.imagesForGrid.count;
+    return self.photoObjects.count;
 }
 
 
@@ -254,19 +252,19 @@
 #pragma Traits View
 
 - (void) switchToTraitView {
-
+    
     UILabel *likesLabel = [UILabel new];
     likesLabel.text = [NSString stringWithFormat:@"Likes"];
     likesLabel.textAlignment = NSTextAlignmentCenter;
     likesLabel.textColor = [UIColor grayColor];
     likesLabel.font = [UIFont systemFontOfSize:17.0];
-
+    
     [likesLabel sizeToFit];
     [self.traitsView addSubview:likesLabel];
-
+    
     likesLabel.frame = CGRectMake((self.traitsView.frame.size.width / 2) - (likesLabel.frame.size.width / 2), 10, likesLabel.frame.size.width, likesLabel.frame.size.height);
     
-//    NSArray *traitTags = [[NSArray alloc] initWithObjects:@"paleo", @"kosher", @"shellfish", @"hamburgers", @"bubble gum", @"rocks", nil];
+    //    NSArray *traitTags = [[NSArray alloc] initWithObjects:@"paleo", @"kosher", @"shellfish", @"hamburgers", @"bubble gum", @"rocks", nil];
     CGFloat xOrigin = 20;
     int row = 1;
     
@@ -285,7 +283,7 @@
         traitsLabel.layer.cornerRadius = traitsLabel.frame.size.height / 2;
         
         xOrigin = xOrigin + traitsLabel.frame.size.width + 10;
-
+        
     }
     
     if (xOrigin != 20) {
@@ -308,7 +306,7 @@
     
     row++;
     
-//    NSArray *dislikeTraits = [[NSArray alloc] initWithObjects:@"dieting", @"core data", @"anything healthy", @"xcode autolayout", nil];
+    //    NSArray *dislikeTraits = [[NSArray alloc] initWithObjects:@"dieting", @"core data", @"anything healthy", @"xcode autolayout", nil];
     
     
     for (NSString *dislike in self.userDislikes) {
@@ -437,16 +435,24 @@
     
     
     if ([segue.identifier isEqualToString:@"settingsSegue"]) {
-    
+        
         SettingsViewController *tempVC = segue.destinationViewController;
-        tempVC.currentUser = self.currentUser;
+        tempVC.currentUser = self.viewingUser;
         
         tempVC.profileImage = self.profilePhotoImageView.image;
         
         
-    } else if ([segue.identifier isEqualToString:@"singlePhotoSegue"]) {
+    } else if ([segue.identifier isEqualToString:@"fullScreenPhotoSegue"]) {
+        
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         
         FullScreenPhotoViewController *tempVC = segue.destinationViewController;
+        
+        tempVC.viewingUserPic = self.profilePhotoImageView.image;
+        tempVC.viewingUser = self.viewingUser;
+        tempVC.viewingPhoto = [self.photoObjects objectAtIndex:indexPath.item];
+        tempVC.imageToDisplay = [self.downloadedImages objectAtIndex:indexPath.item];
+        
     }
     
     

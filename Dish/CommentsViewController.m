@@ -37,12 +37,10 @@
     return self.comments.count;
 }
 
+
 - (IBAction)onBackButtonPressed:(UIButton *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
