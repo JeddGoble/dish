@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.estimatedRowHeight = 60.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     
 }
 
@@ -37,12 +40,10 @@
     return self.comments.count;
 }
 
+
 - (IBAction)onBackButtonPressed:(UIButton *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

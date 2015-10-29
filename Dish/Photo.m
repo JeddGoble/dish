@@ -15,17 +15,10 @@
 @dynamic photoDesc_string;
 @dynamic photoTitle_string;
 @dynamic photo_data;
-@dynamic image;
 @dynamic createdAt;
 @dynamic updatedAt;
-
-- (void)setPhoto_data:(NSData *)photo_data {
-    
-    self.photo_data = photo_data;
-    self.image = [UIImage imageWithData:photo_data];
-    
-    
-}
+@dynamic usersThatLiked_Array;
+@dynamic photoRating_Number;
 
 + (void) load {
     [self registerSubclass];

@@ -14,10 +14,11 @@
 @property (strong, nonatomic) NSString *objectID;
 @property (strong, nonatomic) NSString *photoDesc_string;
 @property (strong, nonatomic) NSString *photoTitle_string;
-@property (strong, nonatomic) NSData *photo_data;
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) PFFile *photo_data;
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSDate *updatedAt;
+@property (strong, nonatomic) NSArray *usersThatLiked_Array;
+@property (strong, nonatomic) NSNumber *photoRating_Number;
 
 
 + (NSString *) parseClassName;

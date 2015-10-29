@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextView *biographyTextView;
 
 
 
@@ -31,15 +32,13 @@
     self.usernameTextField.delegate = self;
     self.usernameTextField.tag = 1;
     
-//    self.bioTextView.delegate = self;
-    
     self.locationTextField.delegate = self;
     self.locationTextField.tag = 2;
     self.emailTextField.delegate = self;
     self.emailTextField.tag = 3;
     
     self.usernameTextField.text = self.currentUser[@"username"];
-//    self.bioTextView.text = self.currentUser[@"bio_string"];
+    self.biographyTextView.text = self.currentUser[@"bio_string"];
     self.locationTextField.text = self.currentUser[@"hometown_string"];
     
     self.profileImageView.image = self.profileImage;
@@ -66,23 +65,25 @@
 }
 
 
-//- (void) saveBio {
-//    NSString *newBio = self.bioTextView.text;
-//    if (newBio.length > 160) {
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Exceeded 160 characters. Please shorten your bio and try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-//        
-//        [alertController addAction:ok];
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    } else {
-//        PFQuery *writeToBio = [PFQuery queryWithClassName:@"_User"];
-//        
-//        [writeToBio getObjectInBackgroundWithId:self.currentUser.objectId block:^(PFObject * _Nullable currentUser, NSError * _Nullable error) {
-//            currentUser[@"bio_string"] = newBio;
-//            [currentUser saveInBackground];
-//        }];
-//    }
-//}
+
+
+- (void) saveBio {
+    NSString *newBio = self.biographyTextView.text;
+    if (newBio.length > 160) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Exceeded 160 characters. Please shorten your bio and try again." message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        PFQuery *writeToBio = [PFQuery queryWithClassName:@"_User"];
+        
+        [writeToBio getObjectInBackgroundWithId:self.currentUser.objectId block:^(PFObject * _Nullable currentUser, NSError * _Nullable error) {
+            currentUser[@"bio_string"] = newBio;
+            [currentUser saveInBackground];
+        }];
+    }
+}
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -103,7 +104,9 @@
 
 
 - (void) saveLocation {
-    
+    PFQuery *writeToLocation = [PFQuery queryWithClassName:@"_User"];
+    self.currentUser[@"hometown_string"] = self.locationTextField.text;
+    [self.currentUser saveInBackground];
 }
 
 - (void) saveEmail {
@@ -111,6 +114,7 @@
 }
 
 - (IBAction)onDoneButtonTapped:(UIButton *)sender {
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
