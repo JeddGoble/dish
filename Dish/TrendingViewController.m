@@ -9,6 +9,7 @@
 // Imported Files
 #import "TrendingViewController.h"
 #import "TrendingTableViewCell.h"
+#import "ProfileViewController.h"
 #import <ParseUI/ParseUI.h>
 #import <Parse/Parse.h>
 
@@ -83,6 +84,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    ProfileViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileID"];
+    tempVC.viewingUser = [self.userArray objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:tempVC animated:YES];
 }
 
 
