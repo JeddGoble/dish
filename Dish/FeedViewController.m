@@ -269,7 +269,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             UILabel *dishName = [[UILabel alloc] init];
-            dishName.frame = CGRectMake(10, 10, 150, 20);
+            dishName.frame = CGRectMake(10, 10, self.view.frame.size.width-20, 20);
             dishName.text = [[self.arrayOfPhotos objectAtIndex:indexPath.section] objectForKey:@"photoTitle_string"];
             dishName.textColor = [UIColor purpleColor];
             [cell addSubview:dishName];
