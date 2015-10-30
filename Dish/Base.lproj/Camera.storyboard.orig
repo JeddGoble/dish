@@ -18,35 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-mn-hNs">
                                 <rect key="frame" x="31" y="274" width="258" height="207"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CeA-mn-hNs" secondAttribute="height" multiplier="250:201" id="bZd-3Q-8Z5"/>
                                 </constraints>
                                 <state key="normal" image="galleryimage">
                                     <color key="titleColor" red="0.5607843137254902" green="0.19607843137254902" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-sU-0BY">
+                                <rect key="frame" x="135" y="481" width="51" height="30"/>
+                                <animations/>
+                                <state key="normal" title="camera"/>
+>>>>>>> login
                                 <connections>
                                     <action selector="selectPhoto:" destination="nqM-D3-AJW" eventType="touchUpInside" id="UZA-Re-0lJ"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-sU-0BY">
                                 <rect key="frame" x="42" y="101" width="228" height="173"/>
-                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yXD-sU-0BY" secondAttribute="height" multiplier="220:167" id="Nf8-wA-ujq"/>
                                 </constraints>
                                 <state key="normal" image="takephotoimage">
                                     <color key="titleColor" red="0.5607843137254902" green="0.19607843137254902" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeA-mn-hNs">
+                                <rect key="frame" x="126" y="400" width="68" height="30"/>
+                                <animations/>
+                                <state key="normal" title="my library"/>
+>>>>>>> login
                                 <connections>
                                     <action selector="takePictureButtonPressed:" destination="nqM-D3-AJW" eventType="touchUpInside" id="nFu-En-Aon"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lor-rg-mbD">
                                 <rect key="frame" x="41" y="279" width="239" height="9"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="9" id="K4v-u4-FEg"/>
@@ -532,7 +543,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="galleryimage" width="512" height="411"/>
+        <image name="galleryimage" width="1242" height="1242"/>
         <image name="starEmpty" width="75" height="75"/>
         <image name="takephotoimage" width="647" height="493"/>
     </resources>
