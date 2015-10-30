@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -20,11 +21,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [PFImageView class];
+    [User registerSubclass]; 
     [Parse enableLocalDatastore];
     
     [Parse setApplicationId:@"7j788icRslnX8sZ7rOI8ukjNd5kKUCiI359DmbDv"
                   clientKey:@"du2VwlT3PV8AJWL4PueNgt3HnCsnYKrfUvBchh3h"];
     
+    //Presents Initial Screen
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Initial" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"InitialScreen"];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
     
     
     
