@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "CommentsViewController.h"
 #import "Photo.h"
+#import "ProfileViewController.h"
 
 @interface FeedViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) PFUser *currentUser;
@@ -114,6 +115,10 @@
         }
     }];
     
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] init];
+    [gestureRecognizer addTarget:self action:@selector(headerTapped:)];
+    [header addGestureRecognizer:gestureRecognizer];
+    
     PFObject *photo = [self.arrayOfPhotos objectAtIndex:section];
     NSDate *photoDate = photo.createdAt;
     NSTimeInterval secondsAgo = [self.currentDate timeIntervalSinceDate:photoDate];
@@ -136,7 +141,21 @@
     return header;
 }
 
+- (void)headerTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    ProfileViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileID"];
+    PFUser *user = self.currentUser;
+    tempVC.viewingUser = user;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController pushViewController:tempVC animated:YES];
+    
+//    PFUser *user = [[self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer].section] objectForKey:@"User_pointer"];
+//    dvc.viewingUser = user;
 
+
+
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
