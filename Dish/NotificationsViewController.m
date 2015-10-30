@@ -33,18 +33,30 @@
     self.tableView.rowHeight = 50;
     
         
-        PFQuery *notificationsQuery = [PFQuery queryWithClassName:@"Notification"];
-                [notificationsQuery whereKey:@"targetUser_pointer" equalTo:self.currentUser];
-        [notificationsQuery orderByDescending:@"createDate"];
-        [notificationsQuery includeKey:@"sourceUser_pointer"];
-        [notificationsQuery includeKey:@"Photo_pointer"];
-        [notificationsQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-            
-            self.arrayOfNotifications = objects;
-            [self.tableView reloadData];
-        }];
+    
         
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self getNotifications];
+    
+}
+
+- (void)getNotifications {
+    
+    PFQuery *notificationsQuery = [PFQuery queryWithClassName:@"Notification"];
+    [notificationsQuery whereKey:@"targetUser_pointer" equalTo:self.currentUser];
+    [notificationsQuery orderByDescending:@"createDate"];
+    [notificationsQuery includeKey:@"sourceUser_pointer"];
+    [notificationsQuery includeKey:@"Photo_pointer"];
+    [notificationsQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        
+        self.arrayOfNotifications = objects;
+        [self.tableView reloadData];
+    }];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

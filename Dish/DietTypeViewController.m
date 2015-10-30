@@ -19,6 +19,7 @@
 @implementation DietTypeViewController
 
 - (void)viewDidLoad {
+
     self.currentUser = [PFUser currentUser];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -86,15 +87,17 @@
     [self.photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"The object has been saved");
+            
+            self.tabBarController.selectedIndex = 4;
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+            
+
         } else {
             NSLog(@"There was a problem, check error.description");
         }
     }];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
-    FeedViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"NewsFeed"];
-    [self presentViewController:dvc animated:YES completion:nil];
-    [dvc queryNewPhotos];
+
     
 }
 

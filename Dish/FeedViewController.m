@@ -30,6 +30,16 @@
     self.currentUser = [PFUser currentUser];
     [super viewDidLoad];
     
+    
+    
+
+
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+
+    [self.arrayOfPhotos removeAllObjects];
     [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
@@ -45,9 +55,7 @@
         self.arrayOfPhotos = [[NSMutableArray alloc] init];
     }
     
-
-    [self queryNewPhotos];
-    
+        [self queryNewPhotos];
 }
 
 
