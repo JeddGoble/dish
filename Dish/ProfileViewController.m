@@ -89,7 +89,7 @@
     
     self.locationTextLabel.alpha = 0.6;
     
-    if (self.viewingUser == [PFUser currentUser]) {
+    if (self.viewingUser != [PFUser currentUser]) {
         self.followButton.hidden = YES;
         self.editSettingsButton.hidden = NO;
     } else {
