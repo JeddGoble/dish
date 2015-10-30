@@ -27,6 +27,7 @@
 @implementation FeedViewController
 
 - (void)viewDidLoad {
+    self.currentUser = [PFUser currentUser];
     [super viewDidLoad];
     
     [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
@@ -44,17 +45,18 @@
         self.arrayOfPhotos = [[NSMutableArray alloc] init];
     }
     
+
     [self queryNewPhotos];
-    
     
 }
 
+
+
 - (void)queryNewPhotos {
     
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
-        self.currentUser = user;
-        
+
+    
+    
         PFQuery *followQuery = [PFQuery queryWithClassName:@"Follow"];
         [followQuery whereKey:@"followedBy_pointer" equalTo:self.currentUser];
         [followQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -85,7 +87,7 @@
             }
         }];
         
-    }];
+    
     
 }
 
@@ -153,11 +155,11 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController pushViewController:tempVC animated:YES];
     
-//    PFUser *user = [[self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer].section] objectForKey:@"User_pointer"];
-//    dvc.viewingUser = user;
-
-
-
+    //    PFUser *user = [[self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer].section] objectForKey:@"User_pointer"];
+    //    dvc.viewingUser = user;
+    
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +187,7 @@
 - (void)commentTapped:(UIGestureRecognizer *)gestureRecognizer {
     
     Photo *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:[gestureRecognizer.view superview]].section];
-
+    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
     CommentsViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"Comments"];
@@ -196,19 +198,19 @@
 
 - (void)doubleTapped:(UIGestureRecognizer *)gestureRecognizer{
     PFObject *photo = [self.arrayOfPhotos objectAtIndex:[self.tableView indexPathForCell:gestureRecognizer.view].section];
-
-
+    
+    
     if (![[photo objectForKey:@"usersThatLiked_array"] containsObject:self.currentUser]) {
-    [photo addObject:self.currentUser forKey:@"usersThatLiked_array"];
-    [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"The object has been saved");
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"There was a problem, check error.description");
-        }
-    }];
-
+        [photo addObject:self.currentUser forKey:@"usersThatLiked_array"];
+        [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"The object has been saved");
+                [self.tableView reloadData];
+            } else {
+                NSLog(@"There was a problem, check error.description");
+            }
+        }];
+        
         PFObject *notification = [PFObject objectWithClassName:@"Notification"];
         [notification setObject:self.currentUser forKey:@"sourceUser_pointer"];
         [notification setObject:[photo objectForKey:@"User_pointer"] forKey:@"targetUser_pointer"];
@@ -221,10 +223,10 @@
                 NSLog(@"There was a problem with notification");
             }
         }];
-
-    
+        
+        
     }
-
+    
     
 }
 
@@ -384,14 +386,14 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.endOfPhotos) {
-
-    NSInteger lastSectionIndex = [tableView numberOfSections] - 1;
-    if (indexPath.section == lastSectionIndex && indexPath.row == 0) {
-        // This is the last cell
-        self.photosDisplayed = [tableView numberOfSections] + 10;
-        [self queryNewPhotos];
         
-    }
+        NSInteger lastSectionIndex = [tableView numberOfSections] - 1;
+        if (indexPath.section == lastSectionIndex && indexPath.row == 0) {
+            // This is the last cell
+            self.photosDisplayed = [tableView numberOfSections] + 10;
+            [self queryNewPhotos];
+            
+        }
     }
 }
 

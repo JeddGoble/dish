@@ -19,14 +19,10 @@
 @implementation DietTypeViewController
 
 - (void)viewDidLoad {
+    self.currentUser = [PFUser currentUser];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
-        self.currentUser = user;
-    }];
     
     self.arrayOfDietTypes = [[NSMutableArray alloc] initWithObjects:
                              @{@"dietType" : @"Vegan",
@@ -98,6 +94,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
     FeedViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"NewsFeed"];
     [self presentViewController:dvc animated:YES completion:nil];
+    [dvc queryNewPhotos];
     
 }
 
