@@ -55,6 +55,15 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if (![PFUser currentUser]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+        UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+        [self presentViewController:tempVC animated:YES completion:nil];
+    }
+}
+
 
 - (IBAction)onHeartButtonPressed:(UIButton *)sender {
     

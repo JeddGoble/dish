@@ -284,6 +284,7 @@
 		04A86A131BD9A20B00D7C883 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04BA10221BE3071100AB409C /* Login */,
 				ACD0698C1BE289FA00D6EAA1 /* Notification */,
 				AC7E75851BE01AEC009251A6 /* Feed */,
 				04BEEF1A1BDFBFF5008A5A7D /* Profile */,
@@ -334,6 +335,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		04BA10221BE3071100AB409C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CD3A9A721BE2CC0E00C840BA /* InitialScreenViewController.h */,
+				CD3A9A731BE2CC0E00C840BA /* InitialScreenViewController.m */,
+				CD8CABD61BE06E8500E9B48C /* LoginViewController.h */,
+				CD8CABD71BE06E8500E9B48C /* LoginViewController.m */,
+				CD3A9A601BE1CA9A00C840BA /* RegistrationViewController.h */,
+				CD3A9A611BE1CA9A00C840BA /* RegistrationViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		04BEEF1A1BDFBFF5008A5A7D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,12 +384,6 @@
 		ACFD77661BDDC3F900511AD3 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
-				CD3A9A721BE2CC0E00C840BA /* InitialScreenViewController.h */,
-				CD3A9A731BE2CC0E00C840BA /* InitialScreenViewController.m */,
-				CD8CABD61BE06E8500E9B48C /* LoginViewController.h */,
-				CD8CABD71BE06E8500E9B48C /* LoginViewController.m */,
-				CD3A9A601BE1CA9A00C840BA /* RegistrationViewController.h */,
-				CD3A9A611BE1CA9A00C840BA /* RegistrationViewController.m */,
 				AC1A54411BDF39A50095B087 /* DietTypeViewController.h */,
 				AC1A54421BDF39A50095B087 /* DietTypeViewController.m */,
 				AC1A543E1BDF28D80095B087 /* DishTypeViewController.h */,

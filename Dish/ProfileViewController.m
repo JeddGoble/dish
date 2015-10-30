@@ -79,6 +79,12 @@
     
     [self.collectionView reloadData];
     
+    if (![PFUser currentUser]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+        UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+        [self presentViewController:tempVC animated:YES completion:nil];
+    }
+    
 }
 
 - (void) initiatePageWithFeed {
@@ -89,7 +95,13 @@
     
     self.locationTextLabel.alpha = 0.6;
     
-    if (self.viewingUser != [PFUser currentUser]) {
+    
+    if (!self.viewingUser) {
+        self.viewingUser = [PFUser currentUser];
+    }
+    
+    
+    if (self.viewingUser == [PFUser currentUser]) {
         self.followButton.hidden = YES;
         self.editSettingsButton.hidden = NO;
     } else {
@@ -105,7 +117,7 @@
     self.profilePhotoImageView.clipsToBounds = YES;
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"Cjuknn7VJp" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
+    [userQuery getObjectInBackgroundWithId:self.viewingUser.objectId block:^(PFObject * _Nullable user, NSError * _Nullable error) {
         self.viewingUser = user;
         
         self.usernameTextLabel.text = self.viewingUser.username;
@@ -355,6 +367,18 @@
 }
 
 - (IBAction)onFollowButtonTapped:(UIButton *)sender {
+    PFObject *newFollow = [PFObject objectWithClassName:@"Follow"];
+    newFollow[@"followedBy_pointer"] = [PFUser currentUser];
+    newFollow[@"following_pointer"] = self.viewingUser;
+    [newFollow saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Follow was successful");
+            [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        } else {
+            NSLog(@"Follow failed");
+        }
+    }];
+    
 }
 
 
