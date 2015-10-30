@@ -190,7 +190,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qLU-4u-kP5" kind="modal" id="Cqt-Rr-muP"/>
+                                    <segue destination="qLU-4u-kP5" kind="modal" identifier="settingsSegue" id="Cqt-Rr-muP"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x1t-wa-cag">
