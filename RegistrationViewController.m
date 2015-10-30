@@ -76,7 +76,7 @@
     if (username.length <= 0 || email.length <= 0 || password.length <= 0 || confirmedPassword.length <= 0 ) {
         
         // Display Alert
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Inorder to proceed, all fields must be completed." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"In order to proceed, all fields must be completed." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"Okay"
                                                              style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                                              }];

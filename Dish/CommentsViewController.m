@@ -32,7 +32,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     
-
+    [self displayComments];
     
 }
 
@@ -65,6 +65,8 @@
                 NSString *fullCommentString = [NSString stringWithFormat:@"%@: %@", commenterName, commentString];
                 [self.comments addObject:fullCommentString];
                 [self.tableView reloadData];
+                
+                
             }];
         }
     }];
@@ -86,8 +88,12 @@
 }
 
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
     [self saveComment];
+    
+    return NO;
 }
 
 - (IBAction)onAddButtonPressed:(UIButton *)sender {
@@ -100,8 +106,13 @@
     PFObject *newCommentObject = [PFObject objectWithClassName:@"Comment"];
     
     newCommentObject[@"User_pointer"] = [PFUser currentUser];
+    newCommentObject[@"Photo_pointer"] = self.viewingPhoto;
+    newCommentObject[@"comment_string"] = newCommentString;
     
-    
+    [newCommentObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self displayComments];
+        self.addCommentTextField.text = @"";
+    }];
     
 }
 

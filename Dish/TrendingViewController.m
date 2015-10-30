@@ -30,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
 // Setting Delegates
     self.trendingSearchBar.delegate = self;
 

@@ -31,6 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
     self.userPhoto.image = self.viewingUserPic;
     self.userPhoto.layer.cornerRadius = self.userPhoto.frame.size.height / 2;
     self.userPhoto.clipsToBounds = YES;
@@ -151,6 +154,9 @@
     if ([segue.identifier  isEqual: @"CommentsID"]) {
         CommentsViewController *tempVC = segue.destinationViewController;
         tempVC.viewingPhoto = self.viewingPhoto;
+        
+        
+        
     }
 
     
