@@ -112,7 +112,20 @@
     [newCommentObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self displayComments];
         self.addCommentTextField.text = @"";
+        
+        PFObject *likeNotification = [PFObject objectWithClassName:@"Notification"];
+        likeNotification[@"notificationType_string"] = @"comment";
+        likeNotification[@"sourceUser_pointer"] = [PFUser currentUser];
+        likeNotification[@"targetUser_pointer"] = self.viewingPhoto[@"User_pointer"];
+        likeNotification[@"Photo_pointer"] = self.viewingPhoto;
+        
+        [likeNotification saveInBackground];
+        
+        
+        
     }];
+    
+    
     
 }
 
