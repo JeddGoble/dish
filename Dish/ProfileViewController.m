@@ -54,9 +54,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UITabBar appearance] setBackgroundColor:[UIColor yellowColor]];
-    [[UITabBar appearance] setTintColor:[UIColor yellowColor]];
-    
     self.mapView.hidden = YES;
     self.traitsView.hidden = YES;
     self.locationButton.hidden = YES;

@@ -33,6 +33,7 @@
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     
     
     return YES;
