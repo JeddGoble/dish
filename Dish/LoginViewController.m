@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "FeedViewController.h"
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 @property FeedViewController *feedViewController;
 @end
 
@@ -17,7 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 
     
 }
@@ -76,6 +77,14 @@
     
     [self userlogin];
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+     [textField resignFirstResponder];
+     return NO;
+}
+
+
 
 
 @end

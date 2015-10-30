@@ -75,8 +75,6 @@
 }
 
 
-
-
 - (void) saveBio {
     NSString *newBio = self.biographyTextView.text;
     if (newBio.length > 160) {
