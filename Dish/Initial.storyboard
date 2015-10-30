@@ -34,10 +34,10 @@
                                 <exclude reference="kgi-0p-v9j"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="GwL-kO-F8k"/>
                                 <exclude reference="GUS-8g-NYo"/>
                                 <exclude reference="SWu-a7-6nB"/>
                                 <exclude reference="m1d-aX-wJ0"/>
-                                <exclude reference="GwL-kO-F8k"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -45,10 +45,10 @@
                                 <include reference="kgi-0p-v9j"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="GwL-kO-F8k"/>
                                 <include reference="GUS-8g-NYo"/>
                                 <include reference="SWu-a7-6nB"/>
                                 <include reference="m1d-aX-wJ0"/>
-                                <include reference="GwL-kO-F8k"/>
                             </mask>
                         </variation>
                     </view>

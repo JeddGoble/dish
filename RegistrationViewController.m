@@ -13,7 +13,7 @@
 #import "LoginViewController.h"
 
 // delegates
-@interface RegistrationViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+@interface RegistrationViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextFieldDelegate>
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
@@ -31,6 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.enterEmailTextField.delegate = self;
+    self.enterPasswordTextField.delegate = self;
+    self.enterUsernameTextfield.delegate = self;
+    self.confirmPasswordTextField.delegate = self;
     
 }
 
@@ -139,6 +144,7 @@
                                                                      if(succeeded){
                                                                          // Dismiss Controller if signup was successful
                                                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                         
                                                                      }
 
                                                                  }];
@@ -148,6 +154,12 @@
                              completion:nil];
                     }];
     }
-}
+    
 
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return NO;
+}
 @end
