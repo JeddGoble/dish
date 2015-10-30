@@ -72,13 +72,13 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    [self.collectionView reloadData];
-    
     if (![PFUser currentUser]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
         UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
         [self presentViewController:tempVC animated:YES completion:nil];
     }
+    
+    [self initiatePageWithFeed];
     
 }
 
@@ -176,6 +176,7 @@
     PFQuery *photoIDQuery = [Photo query];
     [photoIDQuery whereKey:@"User_pointer" equalTo:viewingUser];
     [photoIDQuery setLimit:10];
+    [photoIDQuery orderByDescending:@"createdAt"];
     [photoIDQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
         

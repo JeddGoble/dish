@@ -50,7 +50,6 @@
         UIImage *profileImage = [UIImage imageWithData:data];
         self.profileImageView.image = profileImage;
         
-        
         [self.tableView reloadData];
     }];
     
@@ -108,11 +107,11 @@
 
 - (void) saveUsername {
     
+    
 }
 
 
 - (void) saveLocation {
-    PFQuery *writeToLocation = [PFQuery queryWithClassName:@"_User"];
     self.currentUser[@"hometown_string"] = self.locationTextField.text;
     [self.currentUser saveInBackground];
 }
@@ -164,6 +163,14 @@
 }
 
 
+- (IBAction)onSaveButtonPressed:(UIButton *)sender {
+    [self saveBio];
+    [self saveEmail];
+    [self saveLocation];
+    [self saveUsername];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
