@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.currentUser = [PFUser currentUser];
     
     
     [[UITabBar appearance] setBackgroundColor:[UIColor colorWithRed:83.0 / 255.0 green:33.0 / 255.0 blue:168.0 / 255.0 alpha:1.0]];
@@ -31,12 +32,9 @@
     
     self.tableView.rowHeight = 50;
     
-    PFQuery *userQuery = [PFQuery queryWithClassName:@"_User"];
-    [userQuery getObjectInBackgroundWithId:@"CdmFf26Zqe" block:^(PFObject * _Nullable user, NSError * _Nullable error) {
-        self.currentUser = user;
         
         PFQuery *notificationsQuery = [PFQuery queryWithClassName:@"Notification"];
-        //        [notificationsQuery whereKey:@"targetUser_pointer" equalTo:self.currentUser];
+                [notificationsQuery whereKey:@"targetUser_pointer" equalTo:self.currentUser];
         [notificationsQuery orderByDescending:@"createDate"];
         [notificationsQuery includeKey:@"sourceUser_pointer"];
         [notificationsQuery includeKey:@"Photo_pointer"];
@@ -46,7 +44,7 @@
             [self.tableView reloadData];
         }];
         
-    }];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
