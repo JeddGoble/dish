@@ -33,7 +33,7 @@
         <scene sceneID="qNy-3v-xU5">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="2yh-6c-iKl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="C6Q-nV-0HU"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="whiteheart" selectedImage="whiteheart" id="C6Q-nV-0HU"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTn-0n-b8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,6 +81,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tabbarcamera" width="25" height="25"/>
+        <image name="tabbarcamera" width="1242" height="1242"/>
+        <image name="whiteheart" width="128" height="128"/>
     </resources>
 </document>

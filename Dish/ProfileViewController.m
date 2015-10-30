@@ -54,9 +54,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UITabBar appearance] setBackgroundColor:[UIColor yellowColor]];
-    [[UITabBar appearance] setTintColor:[UIColor yellowColor]];
-    
     self.mapView.hidden = YES;
     self.traitsView.hidden = YES;
     self.locationButton.hidden = YES;
@@ -125,8 +122,25 @@
         self.biographyTextView.text = user[@"bio_string"];
         self.biographyTextView.font = [UIFont systemFontOfSize:14.0];
         self.biographyTextView.textColor = [UIColor whiteColor];
-        self.followersCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followerCount_number"]];
-        self.followingCountLabel.text = [NSString stringWithFormat:@"%@", user[@"followingCount_number"]];
+        
+        PFQuery *dishCountQuery = [PFQuery queryWithClassName:@"Photo"];
+        [dishCountQuery whereKey:@"User_pointer" equalTo:self.viewingUser];
+        [dishCountQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            self.dishesCountLabel.text = [NSString stringWithFormat:@"%lu", objects.count];
+        }];
+        
+        PFQuery *followerCountQuery = [PFQuery queryWithClassName:@"Follow"];
+        [followerCountQuery whereKey:@"followedBy_pointer" equalTo:self.viewingUser];
+        [followerCountQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            self.followersCountLabel.text = [NSString stringWithFormat:@"%lu", objects.count];
+        }];
+        
+        PFQuery *followingCountQuery = [PFQuery queryWithClassName:@"Follow"];
+        [followingCountQuery whereKey:@"following_pointer" equalTo:self.viewingUser];
+        [followingCountQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            self.followingCountLabel.text = [NSString stringWithFormat:@"%lu", objects.count];
+        }];
+        
         
         PFFile *profilePicture = user[@"userProfileImage_data"];
         [profilePicture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
@@ -161,7 +175,7 @@
     
     PFQuery *photoIDQuery = [Photo query];
     [photoIDQuery whereKey:@"User_pointer" equalTo:viewingUser];
-    [photoIDQuery setLimit:6];
+    [photoIDQuery setLimit:10];
     [photoIDQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
         
