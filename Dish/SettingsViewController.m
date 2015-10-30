@@ -37,7 +37,7 @@
     self.emailTextField.delegate = self;
     self.emailTextField.tag = 3;
     
-    self.usernameTextField.text = self.currentUser[@"username"];
+    self.usernameTextField.text = self.currentUser.username;
     self.biographyTextView.text = self.currentUser[@"bio_string"];
     self.locationTextField.text = self.currentUser[@"hometown_string"];
     

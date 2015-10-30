@@ -8,6 +8,7 @@
 
 #import "TakePhotoViewController.h"
 #import "PostPhotoViewController.h"
+#import <Parse/Parse.h>
 
 @interface TakePhotoViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate >
 @property UIImage *image;
@@ -20,6 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (![PFUser currentUser]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+        UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+        [self presentViewController:tempVC animated:YES completion:nil];
+    }
 }
 
 - (IBAction)takePictureButtonPressed:(UIButton *)sender {

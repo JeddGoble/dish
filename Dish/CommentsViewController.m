@@ -10,9 +10,12 @@
 #import "Photo.h"
 #import <Parse/Parse.h>
 
-@interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *comments;
+@property (weak, nonatomic) IBOutlet UITextField *addCommentTextField;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 
 @end
 
@@ -21,8 +24,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.addCommentTextField.delegate = self;
+    
+    self.addButton.hidden = YES;
+    
     self.tableView.estimatedRowHeight = 60.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    
+
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if (![PFUser currentUser]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+        UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+        [self presentViewController:tempVC animated:YES completion:nil];
+    }
+}
+
+- (void) displayComments {
     
     self.comments = [NSMutableArray new];
     
@@ -43,13 +66,8 @@
                 [self.comments addObject:fullCommentString];
                 [self.tableView reloadData];
             }];
-            
-            
         }
-        
-        
     }];
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -66,6 +84,27 @@
     
     return self.comments.count;
 }
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self saveComment];
+}
+
+- (IBAction)onAddButtonPressed:(UIButton *)sender {
+    [self saveComment];
+}
+
+- (void) saveComment {
+    NSString *newCommentString = self.addCommentTextField.text;
+    
+    PFObject *newCommentObject = [PFObject objectWithClassName:@"Comment"];
+    
+    newCommentObject[@"User_pointer"] = [PFUser currentUser];
+    
+    
+    
+}
+
 
 
 - (IBAction)onBackButtonPressed:(UIButton *)sender {

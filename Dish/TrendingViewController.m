@@ -9,6 +9,7 @@
 // Imported Files
 #import "TrendingViewController.h"
 #import "TrendingTableViewCell.h"
+#import "ProfileViewController.h"
 #import <ParseUI/ParseUI.h>
 #import <Parse/Parse.h>
 
@@ -38,6 +39,15 @@
 //change the color of the navigation bar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:103.0/255.0 green:59.0/255.0 blue:183.0/255.0 alpha:1.0f];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if (![PFUser currentUser]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginAndRegistration" bundle:nil];
+        UIViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
+        [self presentViewController:tempVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark - TableView Delegate Methods
@@ -74,6 +84,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    ProfileViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileID"];
+    tempVC.viewingUser = [self.userArray objectAtIndex:indexPath.row];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController pushViewController:tempVC animated:YES];
 }
 
 

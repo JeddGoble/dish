@@ -7,31 +7,75 @@
 //
 
 #import "LoginViewController.h"
-
+#import <Parse/Parse.h>
+#import "FeedViewController.h"
 @interface LoginViewController ()
-
+@property FeedViewController *feedViewController;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   
+
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+-(void)userlogin {
+    
+    NSString *username = self.usernameTextField.text;
+    NSString *password = self.passwordTextField.text;
+
+    if (username.length <= 0 || password.length <= 0) {
+       
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Inorder to proceed, all fields must be completed" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"Okay"
+                                                             style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                                 
+                                                                 
+                                                                 
+                                                                 
+                                                             }];
+        [alert addAction:okayButton];
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
+
+          
+    } else {
+ 
+[PFUser logInWithUsernameInBackground:username password:password
+                                block:^(PFUser *user, NSError *error) {
+                                    if (user) {
+                                    
+                                        [self performSegueWithIdentifier:@"MainStoryboardSegue" sender:nil];
+                                        
+                                    } else {
+                                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:error.localizedDescription
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                        UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"Okay"
+                                                                                             style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                                                                 
+                                                                                                 
+                                                                                                 
+                                                                                                 
+                                                                                             }];
+                                        [alert addAction:okayButton];
+                                        [self presentViewController:alert
+                                                           animated:YES
+                                                         completion:nil];
+                                    }
+                                }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+- (IBAction)onLoginButtonTapped:(UIButton *)sender {
+    
+    [self userlogin];
+}
+
 
 @end

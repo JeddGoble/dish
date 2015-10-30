@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XeV-Ov-V02">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Initial Screen View Controller-->
+        <scene sceneID="bhT-mi-Wqw">
+            <objects>
+                <viewController storyboardIdentifier="InitialScreen" id="XeV-Ov-V02" customClass="InitialScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k0h-ew-CZt"/>
+                        <viewControllerLayoutGuide type="bottom" id="flm-oS-vnB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i4K-wg-qU6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DishSplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="kgi-0p-v9j">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kgi-0p-v9j" firstAttribute="leading" secondItem="i4K-wg-qU6" secondAttribute="leading" id="GUS-8g-NYo"/>
+                            <constraint firstItem="flm-oS-vnB" firstAttribute="top" secondItem="kgi-0p-v9j" secondAttribute="bottom" id="GwL-kO-F8k"/>
+                            <constraint firstItem="kgi-0p-v9j" firstAttribute="top" secondItem="i4K-wg-qU6" secondAttribute="top" id="SWu-a7-6nB"/>
+                            <constraint firstAttribute="trailing" secondItem="kgi-0p-v9j" secondAttribute="trailing" id="m1d-aX-wJ0"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="kgi-0p-v9j"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="GUS-8g-NYo"/>
+                                <exclude reference="SWu-a7-6nB"/>
+                                <exclude reference="m1d-aX-wJ0"/>
+                                <exclude reference="GwL-kO-F8k"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="kgi-0p-v9j"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="GUS-8g-NYo"/>
+                                <include reference="SWu-a7-6nB"/>
+                                <include reference="m1d-aX-wJ0"/>
+                                <include reference="GwL-kO-F8k"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="bUk-1b-yZD" kind="presentation" identifier="CurrentUserFeedSegue" id="rTE-v7-pg0"/>
+                        <segue destination="546-5D-JQU" kind="presentation" identifier="LoginSegue" id="Tv3-A5-rzC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abf-eB-hTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.5" y="358"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="t4z-PN-CuW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="bUk-1b-yZD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AaB-0i-0aW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="199"/>
+        </scene>
+        <!--LoginAndRegistration-->
+        <scene sceneID="NGF-P6-AJP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginAndRegistration" id="546-5D-JQU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxR-9h-fxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="938.25" y="505"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DishSplashScreen" width="1242" height="2208"/>
+    </resources>
+</document>
