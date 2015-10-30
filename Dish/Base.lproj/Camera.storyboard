@@ -495,7 +495,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="galleryimage" width="1242" height="1242"/>
+        <image name="galleryimage" width="512" height="411"/>
         <image name="starEmpty" width="75" height="75"/>
         <image name="takephotoimage" width="647" height="493"/>
     </resources>
