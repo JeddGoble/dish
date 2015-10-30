@@ -46,12 +46,16 @@
 		04A86A461BD9A7CC00D7C883 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A451BD9A7CC00D7C883 /* libsqlite3.tbd */; };
 		04A86A481BD9A7DA00D7C883 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A471BD9A7DA00D7C883 /* Accounts.framework */; };
 		04A86A4A1BD9A7DF00D7C883 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A86A491BD9A7DF00D7C883 /* Social.framework */; };
-		04B4B7C91BE1764B000B5990 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4B7C81BE1764B000B5990 /* CommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		04B4B7C91BE1764B000B5990 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B4B7C81BE1764B000B5990 /* CommentsViewController.m */; };
 		AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1A543B1BDEF1820095B087 /* Profile.storyboard */; };
 		AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A543F1BDF28D80095B087 /* DishTypeViewController.m */; };
 		AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1A54421BDF39A50095B087 /* DietTypeViewController.m */; };
 		ACDDC2AD1BDEBF5000C8AA7F /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */; };
 		ACFD77651BDDC3E500511AD3 /* PostPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */; };
+		CD3A9A621BE1CA9A00C840BA /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3A9A611BE1CA9A00C840BA /* RegistrationViewController.m */; };
+		CD3A9A6F1BE2C59800C840BA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3A9A6E1BE2C59800C840BA /* User.m */; };
+		CD3A9A711BE2CA4500C840BA /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3A9A701BE2CA4500C840BA /* Initial.storyboard */; };
+		CD3A9A741BE2CC0E00C840BA /* InitialScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3A9A731BE2CC0E00C840BA /* InitialScreenViewController.m */; };
 		CD8CABD01BE0159A00E9B48C /* TrendingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */; };
 		CD8CABD81BE06E8500E9B48C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8CABD71BE06E8500E9B48C /* LoginViewController.m */; };
 		CD8CABDA1BE06EE100E9B48C /* LoginAndRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8CABD91BE06EE100E9B48C /* LoginAndRegistration.storyboard */; };
@@ -140,6 +144,13 @@
 		ACDDC2AC1BDEBF5000C8AA7F /* SetLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationViewController.m; sourceTree = "<group>"; };
 		ACFD77631BDDC3E500511AD3 /* PostPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostPhotoViewController.h; sourceTree = "<group>"; };
 		ACFD77641BDDC3E500511AD3 /* PostPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostPhotoViewController.m; sourceTree = "<group>"; };
+		CD3A9A601BE1CA9A00C840BA /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistrationViewController.h; path = ../RegistrationViewController.h; sourceTree = "<group>"; };
+		CD3A9A611BE1CA9A00C840BA /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistrationViewController.m; path = ../RegistrationViewController.m; sourceTree = "<group>"; };
+		CD3A9A6D1BE2C59800C840BA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
+		CD3A9A6E1BE2C59800C840BA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
+		CD3A9A701BE2CA4500C840BA /* Initial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		CD3A9A721BE2CC0E00C840BA /* InitialScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialScreenViewController.h; sourceTree = "<group>"; };
+		CD3A9A731BE2CC0E00C840BA /* InitialScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialScreenViewController.m; sourceTree = "<group>"; };
 		CD8CABCE1BE0159A00E9B48C /* TrendingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingTableViewCell.h; sourceTree = "<group>"; };
 		CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingTableViewCell.m; sourceTree = "<group>"; };
 		CD8CABD61BE06E8500E9B48C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -257,6 +268,8 @@
 		04A86A121BD9A20100D7C883 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04A869D81BD99D8500D7C883 /* LaunchScreen.storyboard */,
+				CD3A9A701BE2CA4500C840BA /* Initial.storyboard */,
 				CD8CABD91BE06EE100E9B48C /* LoginAndRegistration.storyboard */,
 				04A869D31BD99D8500D7C883 /* Main.storyboard */,
 				04A86A211BD9A29300D7C883 /* Feed.storyboard */,
@@ -264,7 +277,6 @@
 				04A86A1B1BD9A27400D7C883 /* Camera.storyboard */,
 				04A86A181BD9A25E00D7C883 /* Notifications.storyboard */,
 				AC1A543B1BDEF1820095B087 /* Profile.storyboard */,
-				04A869D81BD99D8500D7C883 /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -285,12 +297,12 @@
 		04A86A141BD9A21300D7C883 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD3A9A6D1BE2C59800C840BA /* User.h */,
+				CD3A9A6E1BE2C59800C840BA /* User.m */,
 				CD8CABCE1BE0159A00E9B48C /* TrendingTableViewCell.h */,
 				CD8CABCF1BE0159A00E9B48C /* TrendingTableViewCell.m */,
 				0485063E1BDDC1B000E3443E /* Photo.h */,
 				0485063F1BDDC1B000E3443E /* Photo.m */,
-				CD8CABD61BE06E8500E9B48C /* LoginViewController.h */,
-				CD8CABD71BE06E8500E9B48C /* LoginViewController.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -358,6 +370,12 @@
 		ACFD77661BDDC3F900511AD3 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				CD3A9A721BE2CC0E00C840BA /* InitialScreenViewController.h */,
+				CD3A9A731BE2CC0E00C840BA /* InitialScreenViewController.m */,
+				CD8CABD61BE06E8500E9B48C /* LoginViewController.h */,
+				CD8CABD71BE06E8500E9B48C /* LoginViewController.m */,
+				CD3A9A601BE1CA9A00C840BA /* RegistrationViewController.h */,
+				CD3A9A611BE1CA9A00C840BA /* RegistrationViewController.m */,
 				AC1A54411BDF39A50095B087 /* DietTypeViewController.h */,
 				AC1A54421BDF39A50095B087 /* DietTypeViewController.m */,
 				AC1A543E1BDF28D80095B087 /* DishTypeViewController.h */,
@@ -484,6 +502,7 @@
 				CD8CABDA1BE06EE100E9B48C /* LoginAndRegistration.storyboard in Resources */,
 				04A869DA1BD99D8500D7C883 /* LaunchScreen.storyboard in Resources */,
 				04A86A1D1BD9A27400D7C883 /* Camera.storyboard in Resources */,
+				CD3A9A711BE2CA4500C840BA /* Initial.storyboard in Resources */,
 				AC1A543D1BDEF1820095B087 /* Profile.storyboard in Resources */,
 				04A86A231BD9A29300D7C883 /* Feed.storyboard in Resources */,
 				04A86A1A1BD9A25E00D7C883 /* Notifications.storyboard in Resources */,
@@ -514,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3A9A6F1BE2C59800C840BA /* User.m in Sources */,
 				04A869CF1BD99D8500D7C883 /* AppDelegate.m in Sources */,
 				04A86A051BD99E6300D7C883 /* TrendingViewController.m in Sources */,
 				04A869FF1BD99DC900D7C883 /* FeedViewController.m in Sources */,
@@ -523,6 +543,7 @@
 				CD8CABD01BE0159A00E9B48C /* TrendingTableViewCell.m in Sources */,
 				AC1A54431BDF39A50095B087 /* DietTypeViewController.m in Sources */,
 				CD8CABD81BE06E8500E9B48C /* LoginViewController.m in Sources */,
+				CD3A9A741BE2CC0E00C840BA /* InitialScreenViewController.m in Sources */,
 				04B4B7C91BE1764B000B5990 /* CommentsViewController.m in Sources */,
 				04A86A111BD99FC100D7C883 /* ProfileViewController.m in Sources */,
 				AC1A54401BDF28D80095B087 /* DishTypeViewController.m in Sources */,
@@ -530,6 +551,7 @@
 				04014DBE1BDF1CA100C2DCC5 /* SettingsViewController.m in Sources */,
 				04A86A0E1BD99F9700D7C883 /* NotificationsViewController.m in Sources */,
 				04482EFE1BE01C1F008C1CFD /* FullScreenPhotoViewController.m in Sources */,
+				CD3A9A621BE1CA9A00C840BA /* RegistrationViewController.m in Sources */,
 				ACDDC2AD1BDEBF5000C8AA7F /* SetLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
