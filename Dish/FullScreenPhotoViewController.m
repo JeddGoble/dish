@@ -109,6 +109,14 @@
         heart.hidden = YES;
     }];
     
+    PFObject *likeNotification = [PFObject objectWithClassName:@"Notification"];
+    likeNotification[@"notificationType_string"] = @"like";
+    likeNotification[@"sourceUser_pointer"] = [PFUser currentUser];
+    likeNotification[@"targetUser_pointer"] = self.viewingUser;
+    likeNotification[@"Photo_pointer"] = self.viewingPhoto;
+    
+    [likeNotification saveInBackground];
+    
     
 }
 

@@ -385,10 +385,14 @@
     newFollow[@"following_pointer"] = self.viewingUser;
     [newFollow saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSLog(@"Follow was successful");
             [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+            PFObject *followNotification = [PFObject objectWithClassName:@"Notification"];
+            followNotification[@"notificationType_string"] = @"follow";
+            followNotification[@"sourceUser_pointer"] = [PFUser currentUser];
+            followNotification[@"targetUser_pointer"] = self.viewingUser;
+            
+            [followNotification saveInBackground];
         } else {
-            NSLog(@"Follow failed");
         }
     }];
     
