@@ -91,6 +91,7 @@
     ProfileViewController *tempVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileID"];
     tempVC.viewingUser = [self.userArray objectAtIndex:indexPath.row];
     
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController pushViewController:tempVC animated:YES];
 }
 
